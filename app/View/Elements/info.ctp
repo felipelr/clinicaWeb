@@ -1,0 +1,1 @@
+<div class="alert alert-block alert-info"><?php echo $message; ?><button type="button" class="close" data-dismiss="alert">&times;</button></div>

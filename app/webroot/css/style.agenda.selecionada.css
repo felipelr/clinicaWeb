@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27/03/2015, 19:57:40
+    Author     : Felipe
+*/
+#loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#loading-texto{
+    margin-top: 20%;
+    text-align: center;
+    padding: 15px;
+}
+#div-checks, #div-checks-repetir{
+    padding-top: 5px;
+}
+#div-checks label, #div-checks-repetir label{
+    font-weight: bolder;
+}
+.div-eventos-completar {
+    height: 100%;
+    border-color: #e7e7e7;
+    padding-bottom: 10px !important;
+    padding-top: 5px !important;
+    border-right: 5px solid #e7e7e7;
+    margin-left: -10px !important; 
+    margin-top: -20px !important; 
+    width: 300px;
+    position: fixed;
+}
+
+.div-eventos-centro{
+    margin-left: 320px;
+}
+.icheckbox_flat{
+    float: left;
+}
+.datepicker, .bootstrap-timepicker-widget {
+    z-index:1151 !important;
+}
+
