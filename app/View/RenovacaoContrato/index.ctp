@@ -29,8 +29,7 @@
                 <th>Recebimento</th>
                 <th>Paciente</th>
                 <th class="text-center">Valor</th>
-                <th class="text-center">Parcelas Recebidas</th>
-                <th class="text-center">Vencimento</th>
+                <th class="text-center">Ultima Aula</th>
                 <th class="text-center col-sm-2">Ações</th>
             </tr>
         </thead>
@@ -41,8 +40,7 @@
                 <th>Recebimento</th>
                 <th>Paciente</th>
                 <th class="text-center">Valor</th>
-                <th class="text-center">Parcelas Recebidas</th>
-                <th class="text-center">Vencimento</th>
+                <th class="text-center">Ultima Aula</th>
                 <th class="text-center col-sm-2">Ações</th>
             </tr>
         </tfoot>
@@ -140,7 +138,7 @@ $this->start('script');
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "<?php echo $this->Html->url(array("controller" => "renovacao_contrato", "action" => "ajax")); ?>",
+                "url": "<?php echo $this->Html->url(array("controller" => "renovacao_contrato", "action" => "ajax_renovacao")); ?>",
                 "type": "POST",
                 "data": function (d) {
                     d.vencimento_de = $('#data-vencimento-de').val(),
@@ -148,10 +146,9 @@ $this->start('script');
                 }
             },
             "columns": [
-                {"data": "r.descricao"},
-                {"data": "p.nome"},
-                {"data": "r.valor"},
-                {"data": "r.parcelas_pagas", "bSortable": false},
+                {"data": "r.descricao", "bSortable": false},
+                {"data": "p.nome", "bSortable": false},
+                {"data": "r.valor", "bSortable": false},
                 {"data": "r.data_vencimento", "bSortable": false},
                 {"mData": null, "bSortable": false}
             ],
@@ -159,8 +156,7 @@ $this->start('script');
                 jQuery('td', row).eq(1).html(data.p.nome + " " + data.p.sobrenome);
                 jQuery('td', row).eq(2).addClass("text-center");
                 jQuery('td', row).eq(3).addClass("text-center");
-                jQuery('td', row).eq(4).addClass("text-center");
-                jQuery('td', row).eq(5).addClass("text-center").html('<div class="btn-group"> <button class="btn btn-primary" onclick="gotoGestao(' + data.r.idrecebimento + ')"><i class="fa fa-edit fa-lg"></i></button> <a class="btn btn-success" onclick="renovar(' + data.r.idrecebimento + ')" data-toggle="tooltip" data-placement="top" title="Renovar Contrato" target="_blank"><i class="fa fa-repeat fa-lg"></i></a> </div>');
+                jQuery('td', row).eq(4).addClass("text-center").html('<div class="btn-group"> <button class="btn btn-primary" onclick="gotoGestao(' + data.r.idrecebimento + ')"><i class="fa fa-edit fa-lg"></i></button> <a class="btn btn-success" onclick="renovar(' + data.r.idrecebimento + ')" data-toggle="tooltip" data-placement="top" title="Renovar Contrato" target="_blank"><i class="fa fa-repeat fa-lg"></i></a> </div>');
             }
         });
         

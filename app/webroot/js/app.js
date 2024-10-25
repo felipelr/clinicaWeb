@@ -1,5 +1,5 @@
-//var $NOME_APLICACAO = "/ClinicaPainelGerenciador";
-var $NOME_APLICACAO = "/teste";
+//var $NOME_APLICACAO = "/sistema";
+var $NOME_APLICACAO = "/sistema";
 
 jQuery(function () {
     $(".dropdown-custom a").click(function () {

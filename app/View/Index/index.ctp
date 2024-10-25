@@ -4,7 +4,7 @@ echo $this->Html->css(array("style.index.index.css?v=1.9"), null, array("block" 
 $this->start('script');
 ?>
 <script src="<?php echo $this->Html->url("/AdminLTE/plugins/chartjs/Chart.min.js"); ?>"></script>
-<?php echo $this->Html->script("app.index.index.js?v=1.6"); ?>
+<?php echo $this->Html->script("app.index.index.js?v=1.7"); ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
 
@@ -313,10 +313,19 @@ $this->end();
                 <!-- AREA CHART -->
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Resumo de contratos mensal</h3>
+                        <!-- <h3 class="box-title">Resumo de contratos mensal</h3> -->
+                        <h3 class="box-title">Resumo de clientes por modalidade</h3>
                     </div>
                     <div class="box-body">
                         <div class="chart">
+                            <canvas id="pieChartClientesModalidade" style="height:300px;">
+
+                            </canvas>
+                        </div>
+                        <div id="pieChartClientesModalidadeLegend">
+
+                        </div>
+                        <!-- <div class="chart">
                             <canvas id="areaChartContratos" style="height:300px;">
 
                             </canvas>
@@ -324,7 +333,7 @@ $this->end();
                         <div>
                             <span class="bg-green" style="padding-left: 15px;"></span>&nbsp; Contratos Efetivados
                             <span class="bg-red" style="padding-left: 15px;"></span>&nbsp; Contratos Finalizados
-                        </div>
+                        </div> -->
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>

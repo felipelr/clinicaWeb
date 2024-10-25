@@ -1,112 +1,228 @@
 /*
+
 To change this license header, choose License Headers in Project Properties.
+
 To change this template file, choose Tools | Templates
+
 and open the template in the editor.
+
 */
+
 /* 
+
     Created on : 25/11/2014, 20:39:40
+
     Author     : Felipe
+
 */
+
 @media (min-width: 992px) { 
+
     .form-sigin{
+
         width: 500px;
+
         margin-top: 50px;
+
         margin-left: auto;
+
         margin-right: auto;
+
     }
+
 }
+
+
 
 body{
+
 /*    padding-top: 70px !important;*/
+
 }
+
 .form-sigin{
+
     margin-top: 50px;
+
 }
+
 .text-roxo{
+
     color: #9e00a6 !important;
+
 }
+
 /*.dropdown:hover ul:hover{
+
     display: block !important;
+
 }
+
 .dropdown:hover ul{
+
     display: block !important;
+
 }*/
+
 .display{
+
     width: 100% !important;
+
 }
+
 /*.wrapper{
+
     margin-top: 20px;
+
     padding: 10px !important;
+
 }
+
 .navbar-default{
+
     background-color: #0595cb !important;
+
     min-height: 70px !important;
+
     padding-top: 10px;
+
 }
+
 .navbar-default div div ul li a{
+
     color: #fff !important;
+
 }
+
 .navbar-default div div ul li ul li a{
+
     color: #000 !important;
+
 }
+
 .navbar-default div div .navbar-brand{
+
     color: #fff !important;
+
 }
+
 .navbar-default .navbar-toggle .icon-bar {
+
     background-color: #fff !important;
+
 }
+
 .navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
+
     background-color: #0595cb !important;
+
     color: #0595cb !important;
+
 }
+
 .navbar-nav>li>.dropdown-menu {
+
     margin-top: 10px;
+
 }*/
+
 @media (max-width: 768px){
+
     .table {
+
         font-size: 70% !important;
+
     }
+
     .table tbody tr td div .btn, .table tbody tr td .btn {
+
         font-size: 100% !important;
+
     }
+
 /*    .dropdown-menu li a, .dropdown-menu li {
+
         color: #ffffff !important;
+
     }
+
     #dropdown-menu li a, #dropdown-menu li {
+
         color: #ffffff !important;
+
     }*/
+
     
+
 }
+
 .table-bordered thead tr td, .table-bordered tbody tr td, .table-bordered tfoot tr td{
+
     border: 1px solid #eee;
+
 }
+
 .menu-container{
+
     height: 100%;
+
     background-color: #0595cb;
+
     border-color: #e7e7e7;
+
     padding-bottom: 10px !important;
+
     padding-left: 0 !important;
+
     padding-right: 0 !important;
+
     padding-top: 20px !important;
+
     border-right: 5px solid #e7e7e7;
+
     margin: 0 !important;    
+
 }
+
+
 
 .header-big{
+
     padding: 15px !important;
+
 }
+
 .header-big h1{    
+
     font-size: 28pt !important;
+
 }
+
 .canvas_map{
+
     min-height: 500px !important; 
+
 }
+
+
 
 .span.select2-selection.select2-selection--single{
+
     border-radius: 0px !important;
+
     height: auto !important;
+
 }
 
+
+
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+
     border-top-color: #337ab7 !important;
+
+}
+
+.modal-body {
+    max-height: calc(100vh - 185px);
+    overflow-y: auto;
 }

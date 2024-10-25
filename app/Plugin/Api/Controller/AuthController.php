@@ -14,14 +14,6 @@ App::uses('AppController', 'Controller');
  */
 class AuthController extends AppController {
 
-    public function login() {
-        $this->User = new User();
-        $dadosUser = $this->User->validaLogin($email, $senha);
-        if (isset($dadosUser['idusuario'])) {
-            
-        }
-    }
-
     public function index() {
         if (CakeRequest::header('token_validador') != 'abc123') {
             echo json_encode(array("msg" => "Não Autorizado"));

@@ -10,19 +10,22 @@ App::uses('AuthController', 'Controller');
 App::uses('User', 'Model');
 App::uses('TipoUsuario', 'Model');
 App::uses('Clinica', 'Model');
+App::uses('Acesso', 'Model');
 
 /**
  * CakePHP UsuarioController
  * @author Felipe
  */
-class UsuarioController extends AuthController {
+class UsuarioController extends AuthController
+{
 
-    public function index() {
-        
+    public function index()
+    {
     }
 
-    public function cadastrar() {
-        
+    public function cadastrar()
+    {
+
         if ($this->request->is("get")) {
             $tipoUsuario = new TipoUsuario();
             $clinica = new Clinica();
@@ -56,7 +59,8 @@ class UsuarioController extends AuthController {
         }
     }
 
-    public function alterar($idusuario) {
+    public function alterar($idusuario)
+    {
         $user = new User();
         if ($this->request->is("get")) {
             if (isset($idusuario)) {
@@ -88,7 +92,8 @@ class UsuarioController extends AuthController {
         }
     }
 
-    public function excluir() {
+    public function excluir()
+    {
         $idusuario = $this->request->data['idusuario'];
         $this->autoRender = false;
         $this->layout = null;
@@ -102,7 +107,8 @@ class UsuarioController extends AuthController {
         return $this->redirect(array("controller" => "usuario", "action" => "index"));
     }
 
-    public function perfil($idusuario) {
+    public function perfil($idusuario)
+    {
         $user = new User();
         if ($this->request->is("get")) {
             if (isset($idusuario)) {
@@ -127,7 +133,8 @@ class UsuarioController extends AuthController {
         }
     }
 
-    public function alterar_senha() {
+    public function alterar_senha()
+    {
         if ($this->request->is("post")) {
             $user = new User();
             $data = $this->request->data;
@@ -149,7 +156,8 @@ class UsuarioController extends AuthController {
         }
     }
 
-    public function ajax() {
+    public function ajax()
+    {
         $this->layout = null;
         $this->autoRender = false;
         $columns = (isset($this->request->data["columns"])) ? $this->request->data["columns"] : null;
@@ -162,15 +170,40 @@ class UsuarioController extends AuthController {
 
         $content = new User();
         $contents = $content->listarJQuery($search, $start, $length, $ordenacao);
-        
+
         echo json_encode(
-                array(
-                    "draw" => $draw,
-                    "recordsTotal" => (int) $content->totalRegistro(),
-                    "recordsFiltered" => (int) $content->totalRegistroFiltrado($search),
-                    "data" => $contents
-                )
+            array(
+                "draw" => $draw,
+                "recordsTotal" => (int) $content->totalRegistro(),
+                "recordsFiltered" => (int) $content->totalRegistroFiltrado($search),
+                "data" => $contents
+            )
         );
     }
 
+    public function ajax_requisitar_permissao_alterar_eventos_fora_semana()
+    {
+        $this->layout = null;
+        $this->autoRender = false;
+        $senha = (isset($this->request->data["senha"])) ? $this->request->data["senha"] : null;
+
+        $usuario = new User();
+        $dadosUsuario = $usuario->retornarPorSenha($senha);
+
+        $permissaoLiberada = false;
+        if ($dadosUsuario != null) {
+            $acesso = new Acesso();
+            if ($acesso->validarAcesso($dadosUsuario['id_tipo_usuario'], Acesso::$ALTERAR_EVENTOS_FORA_SEMANA)) {
+                $permissaoLiberada = true;
+            }
+        }
+
+        echo json_encode(
+            [
+                "status" => "OK",
+                "permissaoLiberada" => $permissaoLiberada,
+                "dadosUsuario" => $dadosUsuario,
+            ]
+        );
+    }
 }

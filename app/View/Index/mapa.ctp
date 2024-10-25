@@ -22,7 +22,7 @@
     </ul>
 </div>
 <?php $this->start('script'); ?>
-<script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.13"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.13"></script>
 <?php echo $this->Html->script("maplace/maplace-0.1.3.min.js"); ?>
 <?php echo $this->Html->script("maplace/data/points.js"); ?>
 <?php echo $this->Html->script("maplace/data/styles.js"); ?>
@@ -41,7 +41,7 @@
                     lon: lon,
                     title: nome,
                     html: '',
-                    icon: 'http://maps.google.com/mapfiles/markerA.png',
+                    icon: 'https://maps.google.com/mapfiles/markerA.png',
                     draggable: false
 
                 };

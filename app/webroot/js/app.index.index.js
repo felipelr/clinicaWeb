@@ -311,8 +311,9 @@ $(document).ready(function () {
 
     carregarGraficoEventos();
     carregarGraficoFinanceiro();
-    carregarGraficoContratos();
+    // carregarGraficoContratos();
     carregarGraficoPlanoSessao();
+    carregarGraficoClientesModalidade();
     carregarTimeline(startTimeline);
 });
 
@@ -692,5 +693,64 @@ function carregarGraficoPlanoSessao() {
     });
 }
 
+function carregarGraficoClientesModalidade() {
+    //-------------
+    //- PIE CHART -
+    //-------------
+    const PieData = [];
+    const arrayColors = ["#3c8dbc", "#00a65a", "#f39c12", "#f56954", "#d2d6de", "#00c0ef", "#9C27B0", "#009688", "#CDDC39", "#607D8B", "#00BCD4"];
 
+    $.get($NOME_APLICACAO + "/index/ajax_grafico_clientes_modalidade", function (data) {
+        if (data !== null) {
+            const dados = jQuery.parseJSON(data);
+            let colorIndex = 0;
+            dados.clientesModalidade.forEach((modalidade) => {
+                if (colorIndex >= arrayColors.length) {
+                    colorIndex = 0;
+                }
+                const item = {
+                    value: Number(modalidade.QtdePacientes),
+                    label: modalidade.Categoria,
+                    color: arrayColors[colorIndex],
+                    highlight: arrayColors[colorIndex],
+                }
+                PieData.push(item);
+                $("#pieChartClientesModalidadeLegend").append('<span style="background-color: ' + item.color + ';padding-left: 15px;"></span>&nbsp; ' + item.label + '&nbsp;&nbsp;');
+                colorIndex++;
+            })
+        }
 
+        const pieChartCanvas = $("#pieChartClientesModalidade").get(0).getContext("2d");
+        const pieChart = new Chart(pieChartCanvas);
+
+        const pieOptions = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 0, // This is 0 for Pie charts
+            //Number - Amount of animation steps
+            animationSteps: 100,
+            //String - Animation easing effect
+            animationEasing: "easeOutBounce",
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: true,
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= Number(value) %>",
+            multiTooltipTemplate: "<%= Number(value)%>",
+            //String - A legend template
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+        };
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart.Doughnut(PieData, pieOptions);
+    });
+}

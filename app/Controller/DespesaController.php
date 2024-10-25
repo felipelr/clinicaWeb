@@ -21,15 +21,17 @@ App::uses('CategoriaDespesa', 'Model');
  * CakePHP DespesaController
  * @author BersaN & StarK
  */
-class DespesaController extends AuthController {
+class DespesaController extends AuthController
+{
 
     //public $components = array('DebugKit.Toolbar');
 
-    public function index() {
-        
+    public function index()
+    {
     }
 
-    public function cadastrar() {
+    public function cadastrar()
+    {
         if ($this->request->is("post")) {
             $this->layout = null;
             $this->autoRender = false;
@@ -68,7 +70,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function alterar($iddespesa) {
+    public function alterar($iddespesa)
+    {
         $despesa = new Despesa();
         if ($this->request->is("get")) {
             if (isset($iddespesa)) {
@@ -111,7 +114,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function excluir() {
+    public function excluir()
+    {
         $iddespesa = $this->request->data['iddespesa'];
         $this->autoRender = false;
         $this->layout = null;
@@ -125,7 +129,8 @@ class DespesaController extends AuthController {
         return $this->redirect(array("controller" => "despesa", "action" => "index"));
     }
 
-    public function simplificado() {
+    public function simplificado()
+    {
         if ($this->request->is("post")) {
             $this->layout = null;
             $this->autoRender = false;
@@ -174,7 +179,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function ajax() {
+    public function ajax()
+    {
         $this->layout = null;
         $this->autoRender = false;
         $columns = (isset($this->request->data["columns"])) ? $this->request->data["columns"] : null;
@@ -201,16 +207,17 @@ class DespesaController extends AuthController {
         }
 
         $this->response->body(json_encode(
-                        array(
-                            "draw" => $draw,
-                            "recordsTotal" => (int) $content->totalRegistro($idClinica),
-                            "recordsFiltered" => (int) $content->totalRegistroFiltrado($search, $idClinica),
-                            "data" => $dados
-                        )
+            array(
+                "draw" => $draw,
+                "recordsTotal" => (int) $content->totalRegistro($idClinica),
+                "recordsFiltered" => (int) $content->totalRegistroFiltrado($search, $idClinica),
+                "data" => $dados
+            )
         ));
     }
 
-    public function gestao($iddespesa) {
+    public function gestao($iddespesa)
+    {
         if (isset($iddespesa)) {
             $caixaLoja = new CaixaLoja();
             $tipoFinanceiro = new TipoFinanceiro();
@@ -226,7 +233,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function pagar_parcela() {
+    public function pagar_parcela()
+    {
         $this->layout = null;
         $this->autoRender = false;
         if (isset($this->request->data)) {
@@ -237,7 +245,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function alterar_parcela() {
+    public function alterar_parcela()
+    {
         $this->layout = null;
         $this->autoRender = false;
         if (isset($this->request->data)) {
@@ -254,7 +263,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function excluir_parcela() {
+    public function excluir_parcela()
+    {
         $this->layout = null;
         $this->autoRender = false;
         if (isset($this->request->data)) {
@@ -265,7 +275,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function ajax_gestao() {
+    public function ajax_gestao()
+    {
         $this->layout = null;
         $this->autoRender = false;
         $iddespesa = (isset($this->request->query["iddespesa"])) ? $this->request->query["iddespesa"] : null;
@@ -285,7 +296,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function ajax_gestao_totais() {
+    public function ajax_gestao_totais()
+    {
         $this->layout = null;
         $this->autoRender = false;
         $iddespesa = (isset($this->request->query["iddespesa"])) ? $this->request->query["iddespesa"] : null;
@@ -302,7 +314,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function ajax_parcela_detalhes() {
+    public function ajax_parcela_detalhes()
+    {
         $this->layout = null;
         $this->autoRender = false;
         $idfinanceiro = (isset($this->request->query["idfinanceiro"])) ? $this->request->query["idfinanceiro"] : null;
@@ -310,11 +323,6 @@ class DespesaController extends AuthController {
             $financeiro = new Financeiro();
             $dados = $financeiro->retornarDetalhes($idfinanceiro);
             $financeiro_ = $dados[0];
-
-//            ob_start();
-//            var_dump($idfinanceiro);
-//            $result = ob_get_clean();
-//            CakeLog::debug('teste $data = ' . $result);
 
             $financeiro_['financeiro']['valor'] = number_format($financeiro_['financeiro']['valor'], 2, ",", ".");
             $financeiro_['financeiro']['data_vencimento'] = date('d/m/Y', strtotime($financeiro_['financeiro']['data_vencimento']));
@@ -325,7 +333,8 @@ class DespesaController extends AuthController {
         }
     }
 
-    public function inserir_parcela() {
+    public function inserir_parcela()
+    {
         $this->layout = null;
         $this->autoRender = false;
         if (isset($this->request->data)) {
@@ -356,5 +365,4 @@ class DespesaController extends AuthController {
             $despesa->atualizarDespesa($despesaArray['iddespesa']);
         }
     }
-
 }

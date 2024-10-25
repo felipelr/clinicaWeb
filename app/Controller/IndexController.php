@@ -346,6 +346,21 @@ class IndexController extends AuthController {
         $this->response->body(json_encode($dados));
     }
 
+    public function ajax_grafico_clientes_modalidade() {
+        $this->layout = "ajax";
+        $this->autoRender = false;
+        $financeiro = new Financeiro();
+        $dados = array();        
+        
+        $idClinica = (isset($this->_dados['id_clinica'])) ? $this->_dados['id_clinica'] : 1;
+        
+        $clientesModalidade = $financeiro->retornarClientesPorModalidade($idClinica);
+
+        $dados['clientesModalidade'] = $clientesModalidade;
+
+        $this->response->body(json_encode($dados));
+    }
+
     public function ajax_timeline_consultas() {
         $this->layout = "ajax";
         $this->autoRender = false;

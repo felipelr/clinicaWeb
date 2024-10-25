@@ -2,14 +2,14 @@
     <div>
         <a type="button" class="btn btn-default" href="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "index")); ?>"> Voltar</a>
         <a type="button" class="btn btn-primary" onclick="showModalInserir()"> Adicionar Parcela</a>
-        <h3>Gestão do recebimento</h3>
+        <h3>Gestão do recebimento #<?php echo $dadosRecebimento['r']['idrecebimento']; ?></h3>
     </div>
 
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-md-1">
-            <a href="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "alterar", $dadosRecebimento['r']['idrecebimento'])); ?>" type="button" class="btn btn-primary" ><i class="fa fa-lg fa-edit"></i> Editar</a>
-            <br/><br/>
+            <a href="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "alterar", $dadosRecebimento['r']['idrecebimento'])); ?>" type="button" class="btn btn-primary"><i class="fa fa-lg fa-edit"></i> Editar</a>
+            <br /><br />
         </div>
         <div class="col-md-11">
             <div class="col-md-6">
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <hr/>
+    <hr />
     <table class="table table-hover table-responsive table-striped" id="contents-table">
         <thead>
             <tr>
@@ -34,7 +34,7 @@
                 <th class="text-center">Ações</th>
             </tr>
         </thead>
-        <tbody>            
+        <tbody>
         </tbody>
         <tfoot>
             <tr>
@@ -47,7 +47,7 @@
         </tfoot>
     </table>
 
-    <hr/>
+    <hr />
     <div class="row">
         <div class="col-md-4">
             <div id="financeiro" class="box box-primary">
@@ -103,7 +103,7 @@
                             <th class="text-center">Caixa</th>
                         </tr>
                     </thead>
-                    <tbody>            
+                    <tbody>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -135,24 +135,24 @@
             </div>
             <div class="modal-body">
                 <form id="form-receber-parcela" class="form-horizontal" method="post" data-action="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "receber_parcela")); ?>">
-                    <input type="hidden" name="idrecebimento" id="idrecebimento-pagar"/>
-                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-pagar"/>
+                    <input type="hidden" name="idrecebimento" id="idrecebimento-pagar" />
+                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-pagar" />
                     <div class="form-group">
                         <label class="col-md-3">Tipo de financeiro:</label>
                         <div class="col-md-9">
                             <select id="select-tipo-financeiro" class="form-control combos" name="tipo_financeiro">
                                 <?php
                                 $total_tf = count($TipoFinanceiros);
-                                if ($total_tf > 0):
+                                if ($total_tf > 0) :
                                     for ($i_tf = 0; $i_tf < $total_tf; $i_tf++) :
-                                        ?>
-                                        <option value="<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" class="op-<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" ><?php echo $TipoFinanceiros[$i_tf]["t"]["tipo"]; ?></option>
-                                        <?php
+                                ?>
+                                        <option value="<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" class="op-<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>"><?php echo $TipoFinanceiros[$i_tf]["t"]["tipo"]; ?></option>
+                                <?php
                                     endfor;
                                 endif;
                                 ?>
                             </select>
-                        </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Caixa:</label>
@@ -160,16 +160,16 @@
                             <select id="select-caixa" class="form-control combos" name="caixa_loja">
                                 <?php
                                 $total_c = count($Caixas);
-                                if ($total_c > 0):
+                                if ($total_c > 0) :
                                     for ($i_c = 0; $i_c < $total_c; $i_c++) :
-                                        ?>
-                                        <option value="<?php echo $Caixas[$i_c]["c"]["idcaixaloja"]; ?>" class="op-<?php echo $Caixas[$i_c]["c"]["idcaixaloja"]; ?>" ><?php echo $Caixas[$i_c]["c"]["nome_caixa"]; ?></option>
-                                        <?php
+                                ?>
+                                        <option value="<?php echo $Caixas[$i_c]["c"]["idcaixaloja"]; ?>" class="op-<?php echo $Caixas[$i_c]["c"]["idcaixaloja"]; ?>"><?php echo $Caixas[$i_c]["c"]["nome_caixa"]; ?></option>
+                                <?php
                                     endfor;
                                 endif;
                                 ?>
                             </select>
-                        </div>                            
+                        </div>
                     </div>
                 </form>
             </div>
@@ -191,25 +191,25 @@
             </div>
             <div class="modal-body">
                 <form id="form-alterar-parcela" class="form-horizontal" method="post" data-action="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "alterar_parcela")); ?>">
-                    <input type="hidden" name="idrecebimento" id="idrecebimento-alterar"/>
-                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-alterar"/>
+                    <input type="hidden" name="idrecebimento" id="idrecebimento-alterar" />
+                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-alterar" />
                     <div class="form-group">
                         <label class="col-md-3">Valor:</label>
                         <div class="col-md-9">
                             <input id="valor-alterar" name="valor" placeholder="00,00" class="form-control" required />
-                        </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Vencimento:</label>
                         <div class="col-md-9">
                             <input id="vencimento-alterar" name="data_vencimento" placeholder="99/99/9999" class="form-control" required />
-                        </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Motivo:</label>
                         <div class="col-md-9">
                             <textarea id="motivo-alterar" rows="4" name="motivo" maxlength="255" wrap="hard" class="form-control" required></textarea>
-                        </div>                            
+                        </div>
                     </div>
                 </form>
             </div>
@@ -231,13 +231,13 @@
             </div>
             <div class="modal-body">
                 <form id="form-excluir-parcela" class="form-horizontal" method="post" data-action="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "excluir_parcela")); ?>">
-                    <input type="hidden" name="idrecebimento" id="idrecebimento-excluir"/>
-                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-excluir"/>
+                    <input type="hidden" name="idrecebimento" id="idrecebimento-excluir" />
+                    <input type="hidden" name="idfinanceiro" id="idfinanceiro-excluir" />
                     <div class="form-group">
                         <label class="col-md-3">Motivo:</label>
                         <div class="col-md-9">
                             <textarea id="motivo-excluir" rows="4" name="motivo" maxlength="255" wrap="hard" class="form-control" required></textarea>
-                        </div>                            
+                        </div>
                     </div>
                 </form>
             </div>
@@ -259,42 +259,42 @@
             </div>
             <div class="modal-body">
                 <form id="form-inserir-parcela" class="form-horizontal" method="post" data-action="<?php echo $this->Html->url(array("controller" => "recebimento", "action" => "inserir_parcela")); ?>">
-                    <input type="hidden" name="idrecebimento" id="idrecebimento-inserir" value="<?php echo $idrecebimento; ?>"/>
+                    <input type="hidden" name="idrecebimento" id="idrecebimento-inserir" value="<?php echo $idrecebimento; ?>" />
                     <div class="form-group">
                         <label class="col-md-3">Valor:</label>
                         <div class="col-md-9">
                             <input id="valor-inserir" name="valor" placeholder="00,00" class="form-control" required />
-                        </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Vencimento:</label>
                         <div class="col-md-9">
                             <input id="vencimento-inserir" name="data_vencimento" placeholder="99/99/9999" class="form-control" required />
-                        </div>                            
-                    </div>       
+                        </div>
+                    </div>
                     <div class="form-group ">
                         <label for="IdTipoFinanceiroInserir" class="col-md-3">Tipo Financeiro:</label>
                         <div class="col-md-9">
                             <select id="IdTipoFinanceiroInserir" name="id_financeiro_tipo" data-required="true" class="form-control combos" title="Tipo Financeiro">
                                 <?php
                                 $total_tf = count($TipoFinanceiros);
-                                if ($total_tf > 0):
+                                if ($total_tf > 0) :
                                     for ($i_tf = 0; $i_tf < $total_tf; $i_tf++) :
-                                        ?>
-                                        <option value="<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" class="op-<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" ><?php echo $TipoFinanceiros[$i_tf]["t"]["tipo"]; ?></option>
-                                        <?php
+                                ?>
+                                        <option value="<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>" class="op-<?php echo $TipoFinanceiros[$i_tf]["t"]["idfinanceirotipo"]; ?>"><?php echo $TipoFinanceiros[$i_tf]["t"]["tipo"]; ?></option>
+                                <?php
                                     endfor;
                                 endif;
                                 ?>
                             </select>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Eventos Disponíveis:</label>
                         <div class="col-md-9">
                             <input class="form-control" type="number" name="total_disponibilidade" min="0" value="<?php echo $dadosDisponibilidade['total']; ?>" />
-                            <input id="IdEventoDisponibilidadeInserir" type="hidden" name="ideventodisponibilidade" value="<?php echo $dadosDisponibilidade['ideventodisponibilidade']; ?>"/>
-                        </div>                            
+                            <input id="IdEventoDisponibilidadeInserir" type="hidden" name="ideventodisponibilidade" value="<?php echo $dadosDisponibilidade['ideventodisponibilidade']; ?>" />
+                        </div>
                     </div>
                 </form>
             </div>
@@ -307,20 +307,30 @@
 </div>
 <?php
 echo $this->Html->css(array("datepicker.min.css", "select2/select2.min.css", "icheck/all.css"), null, array("block" => "css"));
-echo $this->Html->script(array("bootstrap-datepicker.min.js", "jquery.maskMoney.min.js", "jquery.maskedinput.min.js", "jquery-validate.min.js",
-    "select2/select2.full.min.js", "icheck/icheck.min.js", "jquery.form.min.js"), array("block" => "script"));
+echo $this->Html->script(array(
+    "bootstrap-datepicker.min.js", "jquery.maskMoney.min.js", "jquery.maskedinput.min.js", "jquery-validate.min.js",
+    "select2/select2.full.min.js", "icheck/icheck.min.js", "jquery.form.min.js"
+), array("block" => "script"));
 $this->start('script');
 ?>
 <script type="text/javascript">
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
         jQuery('.combos').select2({
             autocomplete: true,
             width: "100%"
         });
-        $("#valor-alterar").maskMoney({symbol: "R$", decimal: ",", thousands: "."});
+        $("#valor-alterar").maskMoney({
+            symbol: "R$",
+            decimal: ",",
+            thousands: "."
+        });
         $("#vencimento-alterar").mask("99/99/9999");
 
-        $("#valor-inserir").maskMoney({symbol: "R$", decimal: ",", thousands: "."});
+        $("#valor-inserir").maskMoney({
+            symbol: "R$",
+            decimal: ",",
+            thousands: "."
+        });
         $("#vencimento-inserir").mask("99/99/9999");
 
         carregarDados();
@@ -330,11 +340,11 @@ $this->start('script');
         jQuery.ajax({
             url: $NOME_APLICACAO + "/recebimento/ajax_gestao?idrecebimento=<?php echo $idrecebimento; ?>",
             type: 'POST',
-            success: function (data, textStatus, jqXHR) {
+            success: function(data, textStatus, jqXHR) {
                 if (data !== null) {
                     var json = $.parseJSON(data);
                     var html = "";
-                    $.each(json.dados, function (index, value) {
+                    $.each(json.dados, function(index, value) {
                         var pago = parseInt(value.financeiro.pago) === 0 ? 'NÃO' : 'SIM';
                         var botoes = parseInt(value.financeiro.pago) === 0 ? '<div class="btn-group"> <button class="btn btn-success" title="Receber parcela" onclick="showModalReceber(' + value.financeiro.idfinanceiro + ')"><i class="fa fa-usd"></i></button> <button class="btn btn-warning" title="Alterar valor da parcela" onclick="showModalAlterar(' + value.financeiro.idfinanceiro + ')"><i class="fa fa-pencil"></i></button> <button class="btn btn-danger" title="Excluir parcela" onclick="showModalExcluir(' + value.financeiro.idfinanceiro + ')"><i class="fa fa-trash"></i></button> </div>' : '<div class="btn-group"> <button class="btn btn-primary" title="Visualizar detalhes" onclick="vizualizar(' + value.financeiro.idfinanceiro + ')"><i class="fa fa-search"></i></button> </div>';
                         html += '<tr><td class="text-center">' + value.financeiro.parcela + '/' + value.financeiro.total_parcela + '</td> <td class="text-center">' + value.financeiro.valor + '</td> <td class="text-center">' + value.financeiro.data_vencimento + '</td> <td class="text-center">' + pago + '</td> <td class="text-center"> ' + botoes + ' </td></tr>';
@@ -342,7 +352,7 @@ $this->start('script');
                     jQuery('#contents-table tbody').html(html);
                 }
             },
-            error: function () {
+            error: function() {
 
             }
         });
@@ -350,7 +360,7 @@ $this->start('script');
         jQuery.ajax({
             url: $NOME_APLICACAO + "/recebimento/ajax_gestao_totais?idrecebimento=<?php echo $idrecebimento; ?>",
             type: 'POST',
-            success: function (data, textStatus, jqXHR) {
+            success: function(data, textStatus, jqXHR) {
                 if (data !== null) {
                     var json = $.parseJSON(data);
                     jQuery('#total-geral').html(json.dados.total_geral);
@@ -358,7 +368,7 @@ $this->start('script');
                     jQuery('#total-pago').html(json.dados.total_pago);
                 }
             },
-            error: function () {
+            error: function() {
 
             }
         });
@@ -369,7 +379,7 @@ $this->start('script');
             jQuery.ajax({
                 url: $NOME_APLICACAO + "/recebimento/ajax_parcela_detalhes?idfinanceiro=" + idfinanceiro,
                 type: 'POST',
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     if (data !== null) {
                         var json = $.parseJSON(data);
                         jQuery("#idfinanceiro-pagar").val(json.financeiro.idfinanceiro);
@@ -379,7 +389,7 @@ $this->start('script');
                         jQuery("#modalReceberParcela").modal("show");
                     }
                 },
-                error: function () {
+                error: function() {
 
                 }
             });
@@ -391,7 +401,7 @@ $this->start('script');
             jQuery.ajax({
                 url: $NOME_APLICACAO + "/recebimento/ajax_parcela_detalhes?idfinanceiro=" + idfinanceiro,
                 type: 'POST',
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     if (data !== null) {
                         var json = $.parseJSON(data);
                         jQuery("#idfinanceiro-alterar").val(json.financeiro.idfinanceiro);
@@ -402,7 +412,7 @@ $this->start('script');
                         jQuery("#modalAlterarParcela").modal("show");
                     }
                 },
-                error: function () {
+                error: function() {
 
                 }
             });
@@ -414,7 +424,7 @@ $this->start('script');
             jQuery.ajax({
                 url: $NOME_APLICACAO + "/recebimento/ajax_parcela_detalhes?idfinanceiro=" + idfinanceiro,
                 type: 'POST',
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     if (data !== null) {
                         var json = $.parseJSON(data);
                         jQuery("#idfinanceiro-excluir").val(json.financeiro.idfinanceiro);
@@ -423,7 +433,7 @@ $this->start('script');
                         jQuery("#modalExcluirParcela").modal("show");
                     }
                 },
-                error: function () {
+                error: function() {
 
                 }
             });
@@ -437,11 +447,11 @@ $this->start('script');
             url: urlForm,
             type: 'POST',
             data: dadosForm,
-            success: function (data, textStatus, jqXHR) {
+            success: function(data, textStatus, jqXHR) {
                 carregarDados();
                 jQuery("#modalReceberParcela").modal("hide");
             },
-            error: function () {
+            error: function() {
                 carregarDados();
                 jQuery("#modalReceberParcela").modal("hide");
             }
@@ -456,11 +466,11 @@ $this->start('script');
                 url: urlForm,
                 type: 'POST',
                 data: dadosForm,
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     carregarDados();
                     jQuery("#modalAlterarParcela").modal("hide");
                 },
-                error: function () {
+                error: function() {
                     carregarDados();
                     jQuery("#modalAlterarParcela").modal("hide");
                 }
@@ -476,11 +486,11 @@ $this->start('script');
                 url: urlForm,
                 type: 'POST',
                 data: dadosForm,
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     carregarDados();
                     jQuery("#modalExcluirParcela").modal("hide");
                 },
-                error: function () {
+                error: function() {
                     carregarDados();
                     jQuery("#modalExcluirParcela").modal("hide");
                 }
@@ -493,7 +503,7 @@ $this->start('script');
             jQuery.ajax({
                 url: $NOME_APLICACAO + "/recebimento/ajax_parcela_detalhes?idfinanceiro=" + idfinanceiro,
                 type: 'POST',
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     if (data !== null) {
                         var json = $.parseJSON(data);
                         var html = '<tr> <td class="text-center"> ' + json.financeiro.parcela + '/' + json.financeiro.total_parcela + ' </td> <td class="text-center"> ' + json.financeiro.valor + ' </td> <td class="text-center"> ' + json.financeiro.data_vencimento + ' </td> <td class="text-center"> ' + json.financeiro.data_pagamento + ' </td>  <td class="text-center"> ' + json.tipo_financeiro.tipo + ' </td> <td class="text-center"> ' + json.usuario.nome + ' ' + json.usuario.sobrenome + ' </td> <td class="text-center"> ' + json.caixa_loja.nome_caixa + ' </td> </tr>';
@@ -501,7 +511,7 @@ $this->start('script');
                         jQuery("#modalVisualizar").modal("show");
                     }
                 },
-                error: function () {
+                error: function() {
 
                 }
             });
@@ -520,14 +530,14 @@ $this->start('script');
                 url: urlForm,
                 type: 'POST',
                 data: dadosForm,
-                success: function (data, textStatus, jqXHR) {
+                success: function(data, textStatus, jqXHR) {
                     jQuery("#valor-inserir").val("");
                     jQuery("#vencimento-inserir").val("");
                     carregarDados();
                     jQuery("#modalInserirParcela").modal("hide");
                     jQuery("#IdEventoDisponibilidadeInserir").val(data.total);
                 },
-                error: function () {
+                error: function() {
                     jQuery("#valor-inserir").val("");
                     jQuery("#vencimento-inserir").val("");
                     carregarDados();

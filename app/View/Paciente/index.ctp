@@ -58,14 +58,22 @@ echo $this->Html->script(array("dataTables/jquery.dataTables.min.js", "dataTable
 $this->start('script');
 ?>
 <script type="text/javascript">
-    jQuery(document).ready(function () {
-        
-        jQuery('#contents-table').dataTable({
+    let clientsDt;
+
+    jQuery(document).ready(function () {        
+        createTable('1');
+    });
+
+    function createTable(clientStatus){
+        if (clientsDt) {
+            clientsDt.fnDestroy();
+        }
+        clientsDt = jQuery('#contents-table').dataTable({
             pageLength: 25,
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "<?php echo $this->Html->url(array("controller" => "paciente", "action" => "ajax")); ?>",
+                "url": "<?php echo $this->Html->url(array("controller" => "paciente", "action" => "ajax")); ?>?clientStatus=" + clientStatus,
                 "type": "POST"
             },
             "columns": [
@@ -92,12 +100,30 @@ $this->start('script');
         });
         
         $('[data-toggle="tooltip"]').tooltip();
-    });
+
+        let statusFilter = '<div style="float: left; margin-right: 32px; margin-top: 4px;">';
+        statusFilter += '<label style="display: flex;align-items: flex-start;gap: 6px;">';
+        statusFilter += '<input ' + ( clientStatus === '0' ? 'checked="true"' : '' ) + ' style="width: auto;" type="radio" name="radioStatus" value="0" onchange="handleRadioChange()" /> Inativo';
+        statusFilter += '</label>';
+        statusFilter += '<label style="display: flex;align-items: flex-start;gap: 6px;">';
+        statusFilter += '<input ' + ( clientStatus === '1' ? 'checked="true"' : '' ) + ' style="width: auto;" type="radio" name="radioStatus" value="1" onchange="handleRadioChange()"/> Ativo';
+        statusFilter += '</label>';
+        statusFilter += '<label style="display: flex;align-items: flex-start;gap: 6px;">';
+        statusFilter += '<input ' + ( clientStatus === '-1' ? 'checked="true"' : '' ) + ' style="width: auto;" type="radio" name="radioStatus" value="-1" onchange="handleRadioChange()"/> Todos';
+        statusFilter += '</label>';
+        statusFilter += '</div>';
+        $('#contents-table_filter').append(statusFilter);
+    }
 
     function excluir(idpaciente, nome) {
         $('#nome-excluir').html("<b>" + nome + "</b>");
         $('#idpaciente').val(idpaciente);
         $('#myModal').modal('show');
+    }
+
+    function handleRadioChange() {
+        const radioStatus = $('input[name="radioStatus"]:checked').val();
+        createTable(radioStatus);
     }
 </script>
 <?php

@@ -15,9 +15,11 @@ App::uses('CakeEmail', 'Network/Email');
  * CakePHP LoginController
  * @author Felipe
  */
-class LoginController extends AppController {
+class LoginController extends AppController
+{
 
-    public function esqueci_minha_senha() {
+    public function esqueci_minha_senha()
+    {
         $this->autoRender = false;
         $this->layout = null;
         if ($this->request->is('post')) {
@@ -44,7 +46,7 @@ class LoginController extends AppController {
                         $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                     }
                 } catch (Exception $exc) {
-                    CakeLog::debug($exc->getMessage());
+                    CakeLog::error($exc->getMessage());
                     $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                 }
             } else {
@@ -54,7 +56,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function enviar_email_diario_conexao() {
+    public function enviar_email_diario_conexao()
+    {
         CakeSession::write("database", $this->request->data["nome_data_base"]);
         $this->autoRender = false;
         $this->layout = null;
@@ -79,7 +82,7 @@ class LoginController extends AppController {
                             $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                         }
                     } catch (Exception $exc) {
-                        CakeLog::debug($exc->getMessage());
+                        CakeLog::error($exc->getMessage());
                         $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                     }
                 }
@@ -87,7 +90,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function enviar_email_diario() {
+    public function enviar_email_diario()
+    {
         CakeSession::write("database", $this->request->data["nome_data_base"]);
         $this->autoRender = false;
         $this->layout = null;
@@ -112,7 +116,7 @@ class LoginController extends AppController {
                             $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                         }
                     } catch (Exception $exc) {
-                        CakeLog::debug($exc->getMessage());
+                        CakeLog::error($exc->getMessage());
                         $this->Session->setFlash(__('Erro ao enviar e-mail!'), "erro");
                     }
                 }
@@ -120,7 +124,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         CakeSession::write("database", 'database_1');
         $this->layout = 'default_login';
         $this->set('title', 'Login');
@@ -134,7 +139,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function conexao_corpo_mente() {
+    public function conexao_corpo_mente()
+    {
         CakeSession::write("database", 'conexao_corpo_mente');
         $this->layout = 'default_login';
         $this->set('title', 'Login');
@@ -148,7 +154,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function pilates_mari_bia() {
+    public function pilates_mari_bia()
+    {
         CakeSession::write("database", 'pilates_mari_bia');
         $this->layout = 'default_login';
         $this->set('title', 'Login');
@@ -162,7 +169,8 @@ class LoginController extends AppController {
         }
     }
 
-    public function aqua_fisio() {
+    public function aqua_fisio()
+    {
         CakeSession::write("database", 'aqua_fisio');
         $this->layout = 'default_login';
         $this->set('title', 'Login');

@@ -3,11 +3,13 @@
     var _paq = _paq || [];
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
-    (function () {
+    (function() {
         var u = "//cluster-piwik.locaweb.com.br/";
         _paq.push(['setTrackerUrl', u + 'piwik.php']);
         _paq.push(['setSiteId', 1906]);
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        var d = document,
+            g = d.createElement('script'),
+            s = d.getElementsByTagName('script')[0];
         g.type = 'text/javascript';
         g.async = true;
         g.defer = true;
@@ -22,37 +24,38 @@
         <img src="<?php echo $this->Html->url("/img/no-image.gif"); ?>" class="img-circle pull-left" alt="" width="100" style="margin-right: 20px; min-height: 100px;">
     <?php } ?>
     <h3 class=""><?php echo $Profissional['nome'] . " " . $Profissional['sobrenome'] ?></h3>
-    <hr/>
+    <hr />
 
-    <form class="form-inline">        
-        <input id="IdAgenda" type="hidden" value="<?php echo $Agenda['idagenda']; ?>"/>
+    <form class="form-inline">
+        <input id="IdAgenda" type="hidden" value="<?php echo $Agenda['idagenda']; ?>" />
         <div class="form-group">
             <label for="DataAgenda" class="control-label">Selecione a data da agenda: </label>
-        </div>        
+        </div>
         <div class="form-group">
-            <div class="input-group">                                            
+            <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                <input id="DataAgenda" value="<?php echo $DataAtual ?>" name="data[data_selecionada]" placeholder="dia/mes/ano" class="form-control"/>
+                <input id="DataAgenda" value="<?php echo $DataAtual ?>" name="data[data_selecionada]" placeholder="dia/mes/ano" class="form-control" />
             </div>
         </div>
         <div class="form-group">
-            <button id="btn-pesquisar" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>            
+            <button id="btn-pesquisar" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>
         </div>
     </form>
     <div class="clearfix">
-        <br/>
+        <br />
         <button type="button" id="btn-cadastrar-paciente" class="btn btn-warning" onclick="openPacienteModal()"><i class="fa fa-arrow-right fa-lg"></i> Cadastrar paciente</button>
         <button type="button" id="btn-abrir-modal-excluir" onclick="openExcluirPeriodoModal()" class="btn btn-danger"><i class="fa fa-trash fa-lg"></i> Excluir por periodo</button>
         <button type="button" onclick="openReposicaoModal()" class="btn bg-navy"><i class="fa fa-exchange fa-lg"></i> Agendar Reposição</button>
-        <button type="button"  id="btn-confirmar-presencas" class="btn btn-success" onclick="clickCompareceu()" style="display: none;"><i class="fa fa-check"></i> Confirmar presenças</button>
+        <button type="button" id="btn-confirmar-presencas" class="btn btn-success" onclick="clickCompareceu()" style="display: none;"><i class="fa fa-check"></i> Confirmar presenças</button>
+        <button type="button" id="btn-adiar-presencas" class="btn bg-orange" onclick="clickAdiarEventos()" style="display: none;"><i class="fa fa-refresh"></i> Adiar eventos</button>
         <div class="pull-right">
-            <button type="button"  id="btn-relatorio-pacientes" class="btn bg-aqua" onclick="openModalRelatorioPaciente()" ><i class="fa fa-bar-chart-o"></i> Relatório Paciente</button>
+            <button type="button" id="btn-relatorio-pacientes" class="btn bg-aqua" onclick="openModalRelatorioPaciente()"><i class="fa fa-bar-chart-o"></i> Relatório Paciente</button>
             <a class="btn btn-default" href="<?php echo $this->Html->url(array("controller" => "aula_experimental", "action" => "index")); ?>"><i class="fa fa-download fa-lg"></i> Importar Pacientes</a>
         </div>
 
-    </div>    
-    <hr/>
-    <br/>
+    </div>
+    <hr />
+    <br />
     <div class="">
         <div>
             <div id="loading">
@@ -60,10 +63,10 @@
             </div>
             <div id="calendar" style="min-height: 600px !important;">
 
-            </div>  
+            </div>
         </div>
     </div>
-    <br/><br/>
+    <br /><br />
     <!-- MODAL SALVANDO AGUARDE -->
     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalSalvando" class="modal fade">
         <div class="modal-dialog">
@@ -87,7 +90,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar evento</h4>
                 </div>
-                <div id="bodyAdicionar" class="modal-body">                    
+                <div id="bodyAdicionar" class="modal-body">
                     <ul class="nav nav-pills nav-justified" role="tablist">
                         <li role="presentation" class="active"><a href="#tab1" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
                         <li role="presentation"><a href="#tab2" aria-controls="experimental" role="tab" data-toggle="tab">Experimental</a></li>
@@ -96,29 +99,29 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="tab1" style="box-shadow: 0px 1px 3px 1px #E3F2FD;">
                             <div class='' style='padding: 15px;'>
                                 <form id='form-salvar-evento' class='form-horizontal'>
-                                    <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>"/>
+                                    <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>" />
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>título:</label>
                                         <div class='col-md-10'>
-                                            <input id="descricaoEvento" name='data[Evento][descricao]' class='form-control'/>
+                                            <input id="descricaoEvento" name='data[Evento][descricao]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 col-xs-12 control-label'>começa:</label>
                                         <div class='col-md-5 col-xs-6'>
-                                            <input id='dataInicioEvento' name='data[Evento][data_inicio]' class='form-control' value='' />    
+                                            <input id='dataInicioEvento' name='data[Evento][data_inicio]' class='form-control' value='' />
                                         </div>
                                         <div class='col-md-2 col-xs-6'>
-                                            <input id='horaInicioEvento' name='data[Evento][hora_inicio]' class='form-control' value='' />    
+                                            <input id='horaInicioEvento' name='data[Evento][hora_inicio]' class='form-control' value='' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 col-xs-12 control-label'>termina:</label>
                                         <div class='col-md-5 col-xs-6'>
-                                            <input id='dataFimEvento' name='data[Evento][data_fim]' class='form-control' value='' />    
+                                            <input id='dataFimEvento' name='data[Evento][data_fim]' class='form-control' value='' />
                                         </div>
                                         <div class='col-md-2 col-xs-6'>
-                                            <input id='horaFimEvento' name='data[Evento][hora_fim]' class='form-control' value='' />    
+                                            <input id='horaFimEvento' name='data[Evento][hora_fim]' class='form-control' value='' />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -128,11 +131,11 @@
                                                 <option value="0">Nenhum</option>
                                                 <?php
                                                 $total_ = count($Pacientes);
-                                                if ($total_ > 0):
+                                                if ($total_ > 0) :
                                                     for ($i_ = 0; $i_ < $total_; $i_++) :
-                                                        ?>
+                                                ?>
                                                         <option value="<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>"><?php echo $Pacientes[$i_]["p"]["nome"] . ' ' . $Pacientes[$i_]["p"]["sobrenome"]; ?></option>
-                                                        <?php
+                                                <?php
                                                     endfor;
                                                 endif;
                                                 ?>
@@ -149,27 +152,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-2">evento fixo ?</label>
-                                        <div class="col-md-10 div-checks">                                    
+                                        <div class="col-md-10 div-checks">
                                             <label for="EventoFixoNao" class="text-danger">Não</label>
-                                            <input id="EventoFixoNao" type="radio" name="data[Evento][fixo]" value="0" checked/> 
+                                            <input id="EventoFixoNao" type="radio" name="data[Evento][fixo]" value="0" checked />
                                             <label for="EventoFixoSim" class="text-primary">Sim</label>
-                                            <input id="EventoFixoSim" type="radio" name="data[Evento][fixo]" value="1" /> 
+                                            <input id="EventoFixoSim" type="radio" name="data[Evento][fixo]" value="1" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-2">indisponível ?</label>
-                                        <div class="col-md-10 div-checks">                                    
+                                        <div class="col-md-10 div-checks">
                                             <label for="EventoIndisponivelNao" class="text-danger">Não</label>
-                                            <input id="EventoIndisponivelNao" type="radio" name="data[Evento][indisponivel]" value="0" checked/> 
+                                            <input id="EventoIndisponivelNao" type="radio" name="data[Evento][indisponivel]" value="0" checked />
                                             <label for="EventoIndisponivelSim" class="text-primary">Sim</label>
-                                            <input id="EventoIndisponivelSim" type="radio" name="data[Evento][indisponivel]" value="1" /> 
+                                            <input id="EventoIndisponivelSim" type="radio" name="data[Evento][indisponivel]" value="1" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-2">repetir ?</label>
-                                        <div class="col-md-10 div-checks">                                    
+                                        <div class="col-md-10 div-checks">
                                             <label for="EventoRepetirNao" class="text-danger">Não</label>
-                                            <input id="EventoRepetirNao" type="radio" name="data[Evento][repetir]" value="0" checked/> 
+                                            <input id="EventoRepetirNao" type="radio" name="data[Evento][repetir]" value="0" checked />
                                             <label for="EventoRepetirSim" class="text-primary">Sim</label>
                                             <input id="EventoRepetirSim" type="radio" name="data[Evento][repetir]" value="1" />
                                         </div>
@@ -178,29 +181,29 @@
                                         <label class="control-label col-md-2">todo</label>
                                         <div class="col-md-10 div-checks">
                                             <label for="EventoRepetirDia" class="radio-inline">dia</label>
-                                            <input id="EventoRepetirDia" type="radio" name="data[Evento][tipo_repetir]" value="dia" checked/>
+                                            <input id="EventoRepetirDia" type="radio" name="data[Evento][tipo_repetir]" value="dia" checked />
 
                                             <label for="EventoRepetirSemana" class="radio-inline">semana</label>
-                                            <input id="EventoRepetirSemana" type="radio" name="data[Evento][tipo_repetir]" value="semana"/>
+                                            <input id="EventoRepetirSemana" type="radio" name="data[Evento][tipo_repetir]" value="semana" />
 
                                             <label for="EventoRepetirMes" class="radio-inline">mês</label>
-                                            <input id="EventoRepetirMes" type="radio" name="data[Evento][tipo_repetir]" value="mes"/>
+                                            <input id="EventoRepetirMes" type="radio" name="data[Evento][tipo_repetir]" value="mes" />
 
                                             <label for="EventoRepetirAno" class="radio-inline">ano</label>
-                                            <input id="EventoRepetirAno" type="radio" name="data[Evento][tipo_repetir]" value="ano"/>
-                                        </div>                                        
+                                            <input id="EventoRepetirAno" type="radio" name="data[Evento][tipo_repetir]" value="ano" />
+                                        </div>
                                     </div>
                                     <div class="form-group hidden-check-repetir">
                                         <label class="control-label col-xs-12 col-md-2">até</label>
-                                        <div class="col-md-5 col-xs-6">                                    
-                                            <input id="dataFimRepetirEvento" name="data[Evento][data_fim_repetir]" class="form-control"/>  
+                                        <div class="col-md-5 col-xs-6">
+                                            <input id="dataFimRepetirEvento" name="data[Evento][data_fim_repetir]" class="form-control" />
                                         </div>
-                                        <div class="col-md-2 col-xs-6">                                    
-                                            <input id="horaFimRepetirEvento" name="data[Evento][hora_fim_repetir]" class="form-control"/>  
+                                        <div class="col-md-2 col-xs-6">
+                                            <input id="horaFimRepetirEvento" name="data[Evento][hora_fim_repetir]" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group hidden-check-repetir" style="display: none;">
-                                        <hr/>
+                                        <hr />
                                         <div class="form-group">
                                             <label class="control-label col-md-2">configuração</label>
                                             <div class="col-md-10 div-checks">
@@ -212,27 +215,27 @@
                                                 <label for="ConfiguracaoDataInicioEventos" class="control-label col-md-2">Data Início Eventos:</label>
                                                 <div class="col-md-10">
                                                     <input id="ConfiguracaoDataInicioEventos" name="data[Configuracao][data_inicio_eventos]" placeholder="__/__/____" class="form-control" />
-                                                </div>                        
+                                                </div>
                                             </div>
                                             <div class="form-group ">
                                                 <label class="control-label col-md-2">Conflito de horário:</label>
-                                                <div class="col-md-10 div-checks" style="padding-top: 5px">                   
+                                                <div class="col-md-10 div-checks" style="padding-top: 5px">
                                                     <input name="data[Configuracao][conflito]" class="radios_check" type="radio" value="1" id="ConfiguracaoConflito1" checked />
                                                     <label for="ConfiguracaoConflito1" style="font-weight: normal;">Permitir eventos no mesmo horário</label>
                                                     &nbsp;&nbsp;
-                                                    <input name="data[Configuracao][conflito]"  class="radios_check" type="radio" value="0" id="ConfiguracaoConflito0" />
+                                                    <input name="data[Configuracao][conflito]" class="radios_check" type="radio" value="0" id="ConfiguracaoConflito0" />
                                                     <label for="ConfiguracaoConflito0" style="font-weight: normal;">Adiar para semana seguinte</label>
-                                                </div>                        
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-md-2">Evento fixo?</label>
-                                                <div class="col-md-10 div-checks" style="padding-top: 5px">                   
-                                                    <input name="data[Configuracao][fixo]" class="radios_check" type="radio" value="1" id="ConfiguracaoEventoFixoSim"  />
+                                                <div class="col-md-10 div-checks" style="padding-top: 5px">
+                                                    <input name="data[Configuracao][fixo]" class="radios_check" type="radio" value="1" id="ConfiguracaoEventoFixoSim" />
                                                     <label for="ConfiguracaoEventoFixoSim" style="font-weight: normal;">Sim</label>
                                                     &nbsp;&nbsp;
-                                                    <input name="data[Configuracao][fixo]"  class="radios_check" type="radio" value="0" id="ConfiguracaoEventoFixoNao" checked/>
+                                                    <input name="data[Configuracao][fixo]" class="radios_check" type="radio" value="0" id="ConfiguracaoEventoFixoNao" checked />
                                                     <label for="ConfiguracaoEventoFixoNao" style="font-weight: normal;">Não</label>
-                                                </div>                        
+                                                </div>
                                             </div>
                                             <div class="">
                                                 <table id='tabela-eventos' class='table table-responsive table-bordered'>
@@ -258,10 +261,10 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input name="data[Configuracao][eventos][0][horario_inicio]" type="text" class="form-control input-hora-inicio"/>
+                                                                <input name="data[Configuracao][eventos][0][horario_inicio]" type="text" class="form-control input-hora-inicio" />
                                                             </td>
                                                             <td>
-                                                                <input name="data[Configuracao][eventos][0][horario_termino]" type="text" class="form-control input-hora-termino"/>
+                                                                <input name="data[Configuracao][eventos][0][horario_termino]" type="text" class="form-control input-hora-termino" />
                                                             </td>
                                                             <td class="center">
                                                                 <div>
@@ -275,7 +278,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>                                
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button id='btn-salvar-evento' class='btn btn-success' type='button'><i class="fa fa-save fa-lg"></i> Adicionar</button>
@@ -287,54 +290,54 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab2" style="box-shadow: 0px 1px 3px 1px #E3F2FD;">
                             <div class='' style='padding: 15px;'>
                                 <form id='form-salvar-evento-experimental' class='form-horizontal'>
-                                    <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>"/>
+                                    <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>" />
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>título:</label>
                                         <div class='col-md-10'>
-                                            <input id="descricaoEventoExperimetal" name='data[Evento][descricao]' class='form-control'/>
+                                            <input id="descricaoEventoExperimetal" name='data[Evento][descricao]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 col-xs-12 control-label'>começa:</label>
                                         <div class='col-md-5 col-xs-6'>
-                                            <input id='dataInicioEventoExperimetal' name='data[Evento][data_inicio]' class='form-control' value='' />    
+                                            <input id='dataInicioEventoExperimetal' name='data[Evento][data_inicio]' class='form-control' value='' />
                                         </div>
                                         <div class='col-md-2 col-xs-6'>
-                                            <input id='horaInicioEventoExperimetal' name='data[Evento][hora_inicio]' class='form-control' value='' />    
+                                            <input id='horaInicioEventoExperimetal' name='data[Evento][hora_inicio]' class='form-control' value='' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 col-xs-12 control-label'>termina:</label>
                                         <div class='col-md-5 col-xs-6'>
-                                            <input id='dataFimEventoExperimetal' name='data[Evento][data_fim]' class='form-control' value='' />    
+                                            <input id='dataFimEventoExperimetal' name='data[Evento][data_fim]' class='form-control' value='' />
                                         </div>
                                         <div class='col-md-2 col-xs-6'>
-                                            <input id='horaFimEventoExperimetal' name='data[Evento][hora_fim]' class='form-control' value='' />    
+                                            <input id='horaFimEventoExperimetal' name='data[Evento][hora_fim]' class='form-control' value='' />
                                         </div>
                                     </div>
-                                    <hr/>
+                                    <hr />
                                     <h4><i class="fa fa-user"></i> Paciente</h4>
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Nome:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalNome" name='data[AulaExperimental][nome]' class='form-control'/>
+                                            <input id="aulaExperimentalNome" name='data[AulaExperimental][nome]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Sobrenome:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalSobrenome" name='data[AulaExperimental][sobrenome]' class='form-control'/>
+                                            <input id="aulaExperimentalSobrenome" name='data[AulaExperimental][sobrenome]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Data de Nascimento:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalDataNascimento" name='data[AulaExperimental][data_nascimento]' class='form-control'/>
+                                            <input id="aulaExperimentalDataNascimento" name='data[AulaExperimental][data_nascimento]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class="form-group " id="div-radios-sex-exp">
-                                        <label class="control-label col-md-2">*Sexo:</label>                    
-                                        <input name="data[AulaExperimental][sexo]" type="radio" value="M" id="AulaExperimentalSexoM" checked/>
+                                        <label class="control-label col-md-2">*Sexo:</label>
+                                        <input name="data[AulaExperimental][sexo]" type="radio" value="M" id="AulaExperimentalSexoM" checked />
                                         <label for="AulaExperimentalSexoM">Masculino</label>
                                         <input name="data[AulaExperimental][sexo]" type="radio" value="F" id="AulaExperimentalSexoF" />
                                         <label for="AulaExperimentalSexoF">Feminino</label>
@@ -342,24 +345,24 @@
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Email:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalDataEmail" name='data[AulaExperimental][email]' type="email" class='form-control'/>
+                                            <input id="aulaExperimentalDataEmail" name='data[AulaExperimental][email]' type="email" class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Telefone Fixo:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalTelefoneFixo" name='data[AulaExperimental][telefone_fixo]' class='form-control'/>
+                                            <input id="aulaExperimentalTelefoneFixo" name='data[AulaExperimental][telefone_fixo]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <label class='col-md-2 control-label'>Celular:</label>
                                         <div class='col-md-10'>
-                                            <input id="aulaExperimentalTelefoneCelular" name='data[AulaExperimental][telefone_celular]' class='form-control'/>
+                                            <input id="aulaExperimentalTelefoneCelular" name='data[AulaExperimental][telefone_celular]' class='form-control' />
                                         </div>
                                     </div>
                                     <div class="form-group" id="div-radios-civil-exp">
                                         <label class="control-label col-md-2">Estado Civil:</label>
-                                        <input name="data[AulaExperimental][estado_civil]" type="radio" value="Solteiro" id="AulaExperimentalEstadoCivilSolteiro" checked/>
+                                        <input name="data[AulaExperimental][estado_civil]" type="radio" value="Solteiro" id="AulaExperimentalEstadoCivilSolteiro" checked />
                                         <label for="AulaExperimentalEstadoCivilSolteiro">Solteiro</label>
                                         <input name="data[AulaExperimental][estado_civil]" type="radio" value="Casado" id="AulaExperimentalEstadoCivilCasado" />
                                         <label for="AulaExperimentalEstadoCivilCasado">Casado</label>
@@ -370,10 +373,10 @@
                             <div class="modal-footer">
                                 <button id='btn-salvar-evento-experimental' class='btn btn-success' type='button'><i class="fa fa-save fa-lg"></i> Adicionar</button>
                                 &nbsp; ou &nbsp;
-                                <button id='btn-cancelar-evento-experimental' class='btn btn-white' type='button'>Cancelar</button>                                
+                                <button id='btn-cancelar-evento-experimental' class='btn btn-white' type='button'>Cancelar</button>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -389,30 +392,30 @@
                 <div id="bodyAlterar" class="modal-body">
                     <div class='' style='padding: 15px;'>
                         <form id='form-editar-evento' class='form-horizontal'>
-                            <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>"/>
-                            <input id="idEvento" name="data[Evento][idevento]" type="hidden" value=""/>
+                            <input name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>" />
+                            <input id="idEvento" name="data[Evento][idevento]" type="hidden" value="" />
                             <div class='form-group'>
                                 <label class='col-md-2 control-label'>título:</label>
                                 <div class='col-md-10'>
-                                    <input id="descricaoEvento2" name='data[Evento][descricao]' class='form-control'/>
+                                    <input id="descricaoEvento2" name='data[Evento][descricao]' class='form-control' />
                                 </div>
                             </div>
                             <div class='form-group'>
                                 <label class='col-md-2 col-xs-12 control-label'>começa:</label>
                                 <div class='col-md-5 col-xs-6'>
-                                    <input id='dataInicioEvento2' name='data[Evento][data_inicio]' class='form-control' value='' />    
+                                    <input id='dataInicioEvento2' name='data[Evento][data_inicio]' class='form-control' value='' />
                                 </div>
                                 <div class='col-md-2 col-xs-6'>
-                                    <input id='horaInicioEvento2' name='data[Evento][hora_inicio]' class='form-control' value='' />    
+                                    <input id='horaInicioEvento2' name='data[Evento][hora_inicio]' class='form-control' value='' />
                                 </div>
                             </div>
                             <div class='form-group'>
                                 <label class='col-md-2 col-xs-12 control-label'>termina:</label>
                                 <div class='col-md-5 col-xs-6'>
-                                    <input id='dataFimEvento2' name='data[Evento][data_fim]' class='form-control' value='' />    
+                                    <input id='dataFimEvento2' name='data[Evento][data_fim]' class='form-control' value='' />
                                 </div>
                                 <div class='col-md-2 col-xs-6'>
-                                    <input id='horaFimEvento2' name='data[Evento][hora_fim]' class='form-control' value='' />    
+                                    <input id='horaFimEvento2' name='data[Evento][hora_fim]' class='form-control' value='' />
                                 </div>
                             </div>
 
@@ -423,11 +426,11 @@
                                         <option value="0">Nenhum</option>
                                         <?php
                                         $total_ = count($Pacientes);
-                                        if ($total_ > 0):
+                                        if ($total_ > 0) :
                                             for ($i_ = 0; $i_ < $total_; $i_++) :
-                                                ?>
+                                        ?>
                                                 <option class="paciente-<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>" value="<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>"><?php echo $Pacientes[$i_]["p"]["nome"] . ' ' . $Pacientes[$i_]["p"]["sobrenome"]; ?></option>
-                                                <?php
+                                        <?php
                                             endfor;
                                         endif;
                                         ?>
@@ -448,11 +451,11 @@
                                     <label for="EventoIdStatus23" class="text-warning">
                                         <input name="data[Evento][id_evento_status]" type="radio" value="3" id="EventoIdStatus23" />
                                         adiou
-                                    </label>                                        
+                                    </label>
                                     <label for="EventoIdStatus24" class="text-roxo">
                                         <input name="data[Evento][id_evento_status]" type="radio" value="4" id="EventoIdStatus24" />
                                         adiou novamente
-                                    </label>                                        
+                                    </label>
                                     <label for="EventoIdStatus25" class="text-success">
                                         <input name="data[Evento][id_evento_status]" type="radio" value="5" id="EventoIdStatus25" />
                                         compareceu
@@ -462,7 +465,13 @@
                             <div class='form-group'>
                                 <label class='col-md-2 control-label'>Observação:</label>
                                 <div class='col-md-10'>
-                                    <input id="observacaoEvento2" name='data[Evento][observacao]' class='form-control'/>
+                                    <input id="observacaoEvento2" name='data[Evento][observacao]' class='form-control' />
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='col-md-2 control-label'>Recebimento:</label>
+                                <div class='col-md-10'>
+                                    <p id="EventoRecebimentoVisualizar" class='form-control'></p>
                                 </div>
                             </div>
                         </form>
@@ -507,19 +516,19 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-excluir-periodo" class='form-horizontal'>
-                        <input type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>"/>
+                        <input type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>" />
                         <div class="form-group">
                             <label for="idPacienteExcluir" class="control-label col-md-3">paciente:</label>
                             <div class="col-md-9">
-                                <select id="idPacienteExcluir" name="data[id_paciente]" class="form-control" title="Paciente">
+                                <select id="idPacienteExcluir" name="data[id_paciente]" class="form-control">
                                     <option value="0">Nenhum</option>
                                     <?php
                                     $t_ = count($PacientesExcluirEventos);
-                                    if ($t_ > 0):
+                                    if ($t_ > 0) :
                                         for ($i_ = 0; $i_ < $t_; $i_++) :
-                                            ?>
+                                    ?>
                                             <option class="paciente-<?php echo $PacientesExcluirEventos[$i_]["p"]["idpaciente"]; ?>" value="<?php echo $PacientesExcluirEventos[$i_]["p"]["idpaciente"]; ?>"><?php echo $PacientesExcluirEventos[$i_]["p"]["nome"] . ' ' . $PacientesExcluirEventos[$i_]["p"]["sobrenome"]; ?></option>
-                                            <?php
+                                    <?php
                                         endfor;
                                     endif;
                                     ?>
@@ -529,28 +538,28 @@
                         <div class='form-group'>
                             <label class='col-md-3 col-xs-12 control-label'>começa:</label>
                             <div class='col-md-4 col-xs-6'>
-                                <input id='dataInicioExcluir' name='data[data_inicio]' class='form-control' value='' />    
+                                <input id='dataInicioExcluir' name='data[data_inicio]' class='form-control' value='' />
                             </div>
                             <div class='col-md-3 col-xs-6'>
-                                <input id='horaInicioExcluir' name='data[hora_inicio]' class='form-control' value='00:00' />    
+                                <input id='horaInicioExcluir' name='data[hora_inicio]' class='form-control' value='00:00' />
                             </div>
                         </div>
                         <div class='form-group'>
                             <label class='col-md-3 col-xs-12 control-label'>termina:</label>
                             <div class='col-md-4 col-xs-6'>
-                                <input id='dataFimExcluir' name='data[data_fim]' class='form-control' value='' />    
+                                <input id='dataFimExcluir' name='data[data_fim]' class='form-control' value='' />
                             </div>
                             <div class='col-md-3 col-xs-6'>
-                                <input id='horaFimExcluir' name='data[hora_fim]' class='form-control' value='00:00' />    
+                                <input id='horaFimExcluir' name='data[hora_fim]' class='form-control' value='00:00' />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">excluir comparecidos?</label>
-                            <div class="col-md-9 div-checks">                                    
+                            <div class="col-md-9 div-checks">
                                 <label for="ExcluirComparecidosNao" class="text-danger">Não</label>
-                                <input id="ExcluirComparecidosNao" type="radio" name="data[excluir_comparecido]" value="0" checked/> 
+                                <input id="ExcluirComparecidosNao" type="radio" name="data[excluir_comparecido]" value="0" checked />
                                 <label for="ExcluirComparecidosSim" class="text-primary">Sim</label>
-                                <input id="ExcluirComparecidosSim" type="radio" name="data[excluir_comparecido]" value="1" /> 
+                                <input id="ExcluirComparecidosSim" type="radio" name="data[excluir_comparecido]" value="1" />
                             </div>
                         </div>
                         <button id="btn-excluir-periodo-reset" class="hidden" type="reset"></button>
@@ -559,7 +568,7 @@
                 <div class="modal-footer">
                     <button id='btn-excluir-periodo' class='btn btn-danger' type='button'><i class="fa fa-trash fa-lg"></i> Excluir</button>
                     &nbsp; ou &nbsp;
-                    <button id='btn-cancelar-excluir-periodo' class='btn btn-white' type='button'>Cancelar</button>                    
+                    <button id='btn-cancelar-excluir-periodo' class='btn btn-white' type='button'>Cancelar</button>
                 </div>
             </div>
         </div>
@@ -575,19 +584,19 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-repor-aulas" class='form-horizontal'>
-                        <input type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>"/>
+                        <input type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>" />
                         <div class="form-group">
                             <label for="idPacienteRepor" class="control-label col-md-2">paciente:</label>
                             <div class="col-md-10">
-                                <select id="idPacienteReposicao" name="data[id_paciente]" class="form-control" title="Paciente">
+                                <select id="idPacienteReposicao" name="data[id_paciente]" class="form-control">
                                     <option value="0">Nenhum</option>
                                     <?php
                                     $t_ = count($Pacientes);
-                                    if ($t_ > 0):
+                                    if ($t_ > 0) :
                                         for ($i_ = 0; $i_ < $t_; $i_++) :
-                                            ?>
+                                    ?>
                                             <option class="paciente-<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>" value="<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>"><?php echo $Pacientes[$i_]["p"]["nome"] . ' ' . $Pacientes[$i_]["p"]["sobrenome"]; ?></option>
-                                            <?php
+                                    <?php
                                         endfor;
                                     endif;
                                     ?>
@@ -602,8 +611,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">                    
-                    <button id='btn-cancelar-reposicao-aula' class='btn btn-white' type='button'>Cancelar</button>                    
+                <div class="modal-footer">
+                    <button id='btn-cancelar-reposicao-aula' class='btn btn-white' type='button'>Cancelar</button>
                 </div>
             </div>
         </div>
@@ -617,10 +626,10 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Registro diário do atendimento</h4>
                 </div>
-                <div class="modal-body">  
+                <div class="modal-body">
                     <form id="formAdiocionarAcompanhamento" action="<?php echo $this->Html->url(array("controller" => "agenda", "action" => "adicionar_registro_diario")); ?>" method="post">
-                        <input id="AcompanhamentoId" value="0" name="AcompanhamentoFisioterapia[idacompanhamentofisioterapia]" type="hidden"/>
-                        <input id="AcompanhamentoIdEvento" value="0" name="AcompanhamentoFisioterapia[id_evento]" type="hidden"/>
+                        <input id="AcompanhamentoId" value="0" name="AcompanhamentoFisioterapia[idacompanhamentofisioterapia]" type="hidden" />
+                        <input id="AcompanhamentoIdEvento" value="0" name="AcompanhamentoFisioterapia[id_evento]" type="hidden" />
 
                         <div class="bg-success" style="padding: 10px;">
                             <div class="form-group">
@@ -659,7 +668,7 @@
                             <div class="form-group" id="contentGroupAcompanhamentoDescricao" style="display: none;">
                                 <label class="control-label">Descreva o registro</label>
                                 <div id="contentAcompanhamentoDescricao">
-                                    <textarea id="AcompanhamentoDescricao" name="AcompanhamentoFisioterapia[descricao]" rows="12" class="form-control">                                    
+                                    <textarea id="AcompanhamentoDescricao" name="AcompanhamentoFisioterapia[descricao]" rows="12" class="form-control">
                                     </textarea>
                                 </div>
                             </div>
@@ -683,22 +692,29 @@
                 </div>
                 <div class="modal-body">
                     <form id="form-relatorio-paciente" class='form-horizontal'>
-                        <input id="idAgendaRelatorio" type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>"/>
+                        <input id="idAgendaRelatorio" type="hidden" name='data[id_agenda]' value="<?php echo $Agenda['idagenda']; ?>" />
                         <div class="form-group">
                             <label for="idPacienteRelatorio" class="control-label col-md-2">paciente:</label>
                             <div class="col-md-10">
-                                <select id="idPacienteRelatorio" name="data[id_paciente]" class="form-control" title="Paciente">
+                                <select id="idPacienteRelatorio" name="data[id_paciente]" class="form-control">
                                     <option value="0">Nenhum</option>
                                     <?php
                                     $t_ = count($Pacientes);
-                                    if ($t_ > 0):
+                                    if ($t_ > 0) :
                                         for ($i_ = 0; $i_ < $t_; $i_++) :
-                                            ?>
+                                    ?>
                                             <option class="paciente-<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>" value="<?php echo $Pacientes[$i_]["p"]["idpaciente"]; ?>"><?php echo $Pacientes[$i_]["p"]["nome"] . ' ' . $Pacientes[$i_]["p"]["sobrenome"]; ?></option>
-                                            <?php
+                                    <?php
                                         endfor;
                                     endif;
                                     ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="select-recebimentos-paciente" class="control-label col-md-2">recebimentos:</label>
+                            <div class="col-md-10">
+                                <select id="select-recebimentos-paciente" class="form-control" name="data[id_recebimento]">
                                 </select>
                             </div>
                         </div>
@@ -723,7 +739,7 @@
                             </div>
                         </div>
                         <div style="text-align: center">
-                            <br/>
+                            <br />
                             <a href="" id="relatorio-link" target="_blank" data-original-title="PDF"></a>
                             <button id='btn-gerar-relatorio' class='btn btn-primary' type='button' onclick="gerarRelatorioPaciente()"><i class="fa fa-lg fa-file-pdf-o"></i> Gerar PDF</button>
                             &nbsp; ou &nbsp;
@@ -737,19 +753,98 @@
         </div>
     </div>
     <!-- /modal -->
+
+    <!-- MODAL ADIAR EVENTOS -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="myModalAdiarEventos" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Adiar eventos</h4>
+                </div>
+                <div class="modal-body">
+                    <div class='' style='padding: 15px;'>
+                        <form id='form-adiar-eventos' class='form-horizontal'>
+                            <input id="idAgendaEventoAdiar" name="data[Evento][id_agenda]" type="hidden" value="<?php echo $Agenda['idagenda']; ?>" />
+                            <input id="idEventosAdiar" name="data[Evento][idevento]" type="hidden" value="" />
+                            <div class='form-group'>
+                                <label class='col-md-2 control-label'>Observação:</label>
+                                <div class='col-md-10'>
+                                    <input id="observacaoEventoAdiar" name='data[Evento][observacao]' class='form-control' />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id='btn-adiar-eventos' class='btn btn-success' type='button'><i class="fa fa-check fa-lg"></i> Confirmar</button>
+                    &nbsp; ou &nbsp;
+                    <button id='btn-cancelar-adiar-eventos' class='btn btn-white' type='button'>Cancelar</button>
+                    <button id="btn-adiar-eventos-reset" class="hidden" type="reset"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
+    <!-- MODAL REQUISITAR PERMISSAO -->
+    <div class="modal fade" id="modalRequisitarPermissao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Requisitar Permissão</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <h4>Informe a senha para liberar a permissão para alterar eventos anteriores a esta semana.</h4>
+                        <div class="form-group">
+                            <label for="senha-requisitar-permissao" class="control-label">Senha:</label>
+                            <input type="password" class="form-control" id="senha-requisitar-permissao">
+                            <input type="hidden" id="ids-eventos-requisitar-permissao">
+                            <input type="hidden" id="funcao-requisitar-permissao">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="requisitarPermissaoAlterarEventosForaSemana()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php
-echo $this->Html->css(array("datepicker.min.css", "fullcalendar-2.4.0/fullcalendar.min.css",
-    "jspanel/jquery-ui.min.css", "jspanel/jquery.jspanel.css", "select2/select2.min.css", "icheck/all.css", "fileinput.min.css",
-    "style.agenda.selecionada.css?v=1.5"), null, array("block" => "css"));
+echo $this->Html->css(array(
+    "datepicker.min.css", "fullcalendar-2.4.0/fullcalendar.min.css",
+    "jspanel/jquery-ui.min.css",
+    "jspanel/jquery.jspanel.css",
+    "select2/select2.min.css",
+    "icheck/all.css",
+    "fileinput.min.css",
+    "style.agenda.selecionada.css?v=1.5"
+), null, array("block" => "css"));
 
 echo $this->Html->css(array("fullcalendar-2.4.0/fullcalendar.print.css"), array("media" => "print"), array("block" => "css"));
 
-echo $this->Html->script(array("jspanel/jquery-ui.min.js", "jquery.ui.touch-punch.min.js", "bootstrap-datepicker.min.js",
-    "jquery.maskedinput.min.js", "fullcalendar-2.4.0/lib/moment.min.js", "fullcalendar-2.4.0/fullcalendar.min.js",
-    "fullcalendar-2.4.0/lang-all.js", "dateFormat.js", "jquery.dateFormat.js", "jspanel/mobile-detect.min.js",
-    "jspanel/jquery.jspanel.js", "moment-with-locales.min.js", "jquery.form.min.js", "select2/select2.full.min.js",
-    "icheck/icheck.min.js", "fileinput.min.js", "jquery-validate.min.js"), array("block" => "script"));
+echo $this->Html->script(array(
+    "jspanel/jquery-ui.min.js",
+    "jquery.ui.touch-punch.min.js",
+    "bootstrap-datepicker.min.js",
+    "jquery.maskedinput.min.js",
+    "fullcalendar-2.4.0/lib/moment.min.js",
+    "fullcalendar-2.4.0/fullcalendar.min.js",
+    "fullcalendar-2.4.0/lang-all.js",
+    "dateFormat.js",
+    "jquery.dateFormat.js",
+    "jspanel/mobile-detect.min.js",
+    "jspanel/jquery.jspanel.js",
+    "moment-with-locales.min.js",
+    "jquery.form.min.js",
+    "select2/select2.full.min.js",
+    "icheck/icheck.min.js",
+    "fileinput.min.js",
+    "jquery-validate.min.js"
+), array("block" => "script"));
 
-echo $this->Html->script(array("app.agenda.selecionada.js?v=3.0"), array("block" => "script"));
+echo $this->Html->script(array("app.agenda.selecionada.js?v=6.0"), array("block" => "script"));

@@ -24,7 +24,61 @@ class RenovacaoContratoController extends AuthController {
         $this->set('TipoFinanceiros', $tipoFinanceiros_);
     }
 
-    public function ajax() {
+    public function ajax_teste(){
+        $this->layout = null;
+        $this->autoRender = false;
+
+        $columns = (isset($this->request->data["columns"])) ? $this->request->data["columns"] : null;
+        $order = (isset($this->request->data["order"])) ? $this->request->data["order"] : null;
+        $draw = (isset($this->request->data["draw"])) ? $this->request->data["draw"] : 0;
+        $start = (isset($this->request->data["start"])) ? $this->request->data["start"] : 0;
+        $length = (isset($this->request->data["length"])) ? $this->request->data["length"] : 0;
+        $search = (isset($this->request->data["search"]["value"]) && !empty($this->request->data["search"]["value"])) ? $this->request->data["search"]["value"] : null;
+        $ordenacao = $columns[$order[0]["column"]]["data"] . " " . strtoupper($order[0]["dir"]);
+
+        $strVencimentoDe = (isset($this->request->data["vencimento_de"])) ? $this->request->data["vencimento_de"] : null;
+        $strVencimentoAte = (isset($this->request->data["vencimento_ate"])) ? $this->request->data["vencimento_ate"] : null;
+
+        $arrayDe = explode('/', $strVencimentoDe);
+        $arrayAte = explode('/', $strVencimentoAte);
+        $isDataDe = false;
+        $isDataAte = false;
+
+        if (count($arrayDe) == 3) {
+            $dia = (int) $arrayDe[0];
+            $mes = (int) $arrayDe[1];
+            $ano = (int) $arrayDe[2];
+
+            if (checkdate($mes, $dia, $ano)) {
+                $isDataDe = true;
+                $strVencimentoDe = $ano . '/' . $mes . '/' . $dia;
+            }
+        }
+
+        if (count($arrayAte) == 3) {
+            $dia = (int) $arrayAte[0];
+            $mes = (int) $arrayAte[1];
+            $ano = (int) $arrayAte[2];
+
+            if (checkdate($mes, $dia, $ano)) {
+                $isDataAte = true;
+                $strVencimentoAte = $ano . '/' . $mes . '/' . $dia;
+            }
+        }
+
+        $vencimentoDe = $isDataDe ? $strVencimentoDe : null;
+        $vencimentoAte = $isDataAte ? $strVencimentoAte : null;
+
+        $content = new Recebimento();
+
+        $this->response->body(json_encode(
+            array(
+                "message" => "teste",
+            )
+));
+    }
+
+    public function ajax_renovacao() {
         $this->layout = null;
         $this->autoRender = false;
         $columns = (isset($this->request->data["columns"])) ? $this->request->data["columns"] : null;
@@ -76,8 +130,7 @@ class RenovacaoContratoController extends AuthController {
             foreach ($contents as $_content) {
                 //$_content['p']["data_nascimento"] = date('d/m/Y', strtotime($_content['p']['data_nascimento']));                
                 $_content['r']['valor'] = 'R$ ' . number_format($_content['r']['valor'], 2, ",", ".");
-                $_content['r']['parcelas_pagas'] = $_content[0]['parcelas_pagas'];
-                $_content['r']['data_vencimento'] = date('d/m/Y', strtotime($_content['x']['data_vencimento']));
+                $_content['r']['data_vencimento'] = date('d/m/Y', strtotime($_content['x']['UltimaAula']));
                 $dados[] = $_content;
             }
         }
@@ -85,8 +138,8 @@ class RenovacaoContratoController extends AuthController {
         $this->response->body(json_encode(
                         array(
                             "draw" => $draw,
-                            "recordsTotal" => (int) $content->totalRegistroRenovacaoContrato(),
-                            "recordsFiltered" => (int) $content->totalRegistroRenovacaoContratoFiltrado($search),
+                            "recordsTotal" => (int) $content->totalRegistroRenovacaoContrato($vencimentoDe, $vencimentoAte),
+                            "recordsFiltered" => (int) $content->totalRegistroRenovacaoContratoFiltrado($search, $vencimentoDe, $vencimentoAte),
                             "data" => $dados
                         )
         ));
@@ -150,7 +203,7 @@ class RenovacaoContratoController extends AuthController {
                     $dataVencimento->add(new DateInterval('P1M'));
                 }
 
-                $recebimento->atualizarRecebimento($data['idrecebimento']);
+                $recebimento->atualizarRecebimento($data['idrecebimento'], $recebimentoArray['quantidade_sessoes']);
 
                 $recebimento->atualizarSessoesRecebimento($data['idrecebimento'], ($data['quantidade_sessoes_mes'] * $data['quantidade_parcela']));
 
