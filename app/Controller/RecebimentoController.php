@@ -203,7 +203,7 @@ class RecebimentoController extends AuthController
                         $planoSessaoSelecionado = $planoSessao->retornarPorId($dadosRecebimento['id_plano_sessao']);
                     }
 
-                    $quantidadeSessoesMax = 0;
+                    $quantidadeSessoesMax = 1;
 
                     if (isset($planoSessaoSelecionado)) {
                         if ($planoSessaoSelecionado['tipo_quantidade_sessoes'] == 'MAX') {
