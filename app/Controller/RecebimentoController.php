@@ -166,7 +166,7 @@ class RecebimentoController extends AuthController
             if (isset($data['Recebimento']['eventos'])) {
                 $eventos = $data['Recebimento']['eventos'];
                 $dataInicio = $data['Recebimento']['data_inicio_eventos'];
-                $idAgenda = $data['Recebimento']['id_agenda'];
+                $idAgenda = isset($data['Recebimento']['id_agenda']) ? $data['Recebimento']['id_agenda'] : 0;
                 $tipoConflito = $data['Recebimento']['conflito'];
                 $fixo = $data['Recebimento']['fixo'];
             }
