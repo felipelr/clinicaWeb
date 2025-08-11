@@ -1559,53 +1559,28 @@ class Financeiro extends AppModel {
         $sql = "
 
             SELECT X.nome as Profissional, X.Cargo as Cargo, X.paciente as Paciente,X.idprofissional, X.idpaciente, X.idrecebimento,
-
                                      X.descricao, X.descricao_evento,X.Porcentagem,X.Categoria_aula, COUNT(X.idevento) as Total_eventos, SUM(X.Compareceu) as Efetivados, X.Valor_sessao,
-
                                      (SUM(X.Compareceu) * X.Valor_sessao) * (X.Porcentagem/100) as Comissao, (SUM(X.Compareceu) * X.Valor_sessao) as Total_geral		 
-
             FROM (
-
                                     SELECT CONCAT(profissional.nome, ' ', profissional.sobrenome) as nome,evento.descricao as descricao_evento, cargo.descricao as Cargo,categoria_aula.descricao as Categoria_aula, CONCAT(paciente.nome, ' ', paciente.sobrenome) AS paciente,
-
                                                              recebimento.descricao, evento.idevento, evento.id_evento_status, profissional.idprofissional, paciente.idpaciente, recebimento.idrecebimento,
-
                                                              CASE WHEN evento.id_evento_status = 5 OR evento.id_evento_status = 2 THEN 1 ELSE 0 END AS Compareceu,
-
                                                              CASE WHEN IFNULL(plano_sessao.valor_sessao,0) = 0 THEN recebimento.valor / recebimento.quantidade_sessoes ELSE plano_sessao.valor_sessao END as Valor_sessao, 
-
                                                              profissional_categoria_aula.porcentagem as Porcentagem
-
                                     FROM evento
-
                                     INNER JOIN agenda ON(evento.id_agenda = agenda.idagenda)
-
                                     INNER JOIN profissional ON(profissional.idprofissional = agenda.id_profissional)
-
                                     INNER JOIN paciente ON(paciente.idpaciente = evento.id_paciente)
-
                                     INNER JOIN recebimento ON(evento.id_recebimento = recebimento.idrecebimento)
-
-                                    LEFT JOIN plano_sessao ON(recebimento.id_plano_sessao = plano_sessao.idplanosessao)
-
-                                    INNER JOIN profissional_recebimento ON(profissional_recebimento.id_profissional = profissional.idprofissional and profissional_recebimento.id_recebimento = recebimento.idrecebimento)
-
+                                    LEFT JOIN plano_sessao ON(recebimento.id_plano_sessao = plano_sessao.idplanosessao) 
                                     INNER JOIN profissional_categoria_aula ON(profissional.idprofissional = profissional_categoria_aula.id_profissional AND recebimento.id_categoria_aula = profissional_categoria_aula.id_categoria_aula)
-
                                     INNER JOIN categoria_aula ON(recebimento.id_categoria_aula = categoria_aula.idcategoriaaula)
-
                                     INNER JOIN cargo ON(cargo.idcargo = profissional.id_cargo)
-
                                     INNER JOIN evento_disponibilidade ON(evento_disponibilidade.id_paciente = paciente.idpaciente and evento_disponibilidade.id_recebimento = recebimento.idrecebimento)
-
                                     INNER JOIN clinica ON(clinica.idclinica = recebimento.id_clinica)
-
-                                    WHERE profissional.idprofissional = $id_profissional and DATE_FORMAT(evento.data_inicio, '%m-%Y') = '$dataRelatorio' and agenda.ativo = 1
-
+                                    WHERE profissional.idprofissional = $id_profissional and DATE_FORMAT(evento.data_inicio, '%m-%Y') = '$dataRelatorio' and agenda.ativo = 1 and evento.gerou_reposicao = 0
                                     GROUP BY profissional.idprofissional, paciente.idpaciente, recebimento.idrecebimento, evento.idevento
-
             ) AS X
-
             GROUP BY X.idprofissional, X.idpaciente, X.idrecebimento"; 
             
             return $this->query("$sql");

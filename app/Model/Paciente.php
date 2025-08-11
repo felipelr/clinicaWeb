@@ -42,24 +42,22 @@ class Paciente extends AppModel
 
     public function listarJQuery($search = null, $inicio = null, $totalRegistros = null, $ordenacao = null, $clientStatus = 1)
     {
-        $filterStatus = $clientStatus == -1 ? "" : " AND p.ativo = $clientStatus ";
         $order = (is_null($ordenacao)) ? "" : "ORDER BY $ordenacao";
         $sql = (is_null($inicio) || is_null($totalRegistros)) ? "" : "LIMIT $inicio,$totalRegistros";
-        $query = (is_null($search)) ? " WHERE 1 = 1 $filterStatus " : " WHERE 1 = 1 $filterStatus and (CONCAT(TRIM(p.nome), ' ', TRIM(p.sobrenome)) LIKE '%{$search}%' OR p.email LIKE '%{$search}%' OR p.cpf LIKE '%{$search}%') ";
+        $query = (is_null($search)) ? " WHERE p.ativo = $clientStatus " : " WHERE p.ativo = $clientStatus and (CONCAT(TRIM(p.nome), ' ', TRIM(p.sobrenome)) LIKE '%{$search}%' OR p.email LIKE '%{$search}%' OR p.cpf LIKE '%{$search}%') ";
         return $this->query("SELECT p.idpaciente, p.nome, p.sobrenome, p.email, p.cpf, p.telefone_fixo, p.telefone_celular FROM paciente p {$query} {$order} {$sql};");
     }
 
-    public function totalRegistroFiltrado($search = null, $clientStatus = 1)
+    public function totalRegistroFiltrado($search = null)
     {
-        $filterStatus = $clientStatus == -1 ? "" : " AND p.ativo = $clientStatus ";
-        $query = (is_null($search)) ? " WHERE 1 = 1 $filterStatus " : " WHERE 1 = 1 $filterStatus AND (CONCAT(p.nome, ' ', p.sobrenome) LIKE '%{$search}%' OR p.email LIKE '%{$search}%' OR p.cpf LIKE '%{$search}%') ";
+        $query = (is_null($search)) ? " WHERE p.ativo = 1 " : " WHERE p.ativo = 1 and (CONCAT(p.nome, ' ', p.sobrenome) LIKE '%{$search}%' OR p.email LIKE '%{$search}%' OR p.cpf LIKE '%{$search}%') ";
         $dados = $this->query("SELECT count(p.idpaciente) as totalRegistro FROM paciente p {$query}");
         return isset($dados[0][0]['totalRegistro']) ? $dados[0][0]['totalRegistro'] : 0;
     }
 
     public function totalRegistro()
     {
-        $dados = $this->query("SELECT count(idpaciente) as totalRegistro FROM paciente ");
+        $dados = $this->query("SELECT count(idpaciente) as totalRegistro FROM paciente WHERE ativo = 1");
         return isset($dados[0][0]['totalRegistro']) ? $dados[0][0]['totalRegistro'] : 0;
     }
 
@@ -98,32 +96,38 @@ class Paciente extends AppModel
             $ddde = new DateTime($dataDE);
             $ddate = new DateTime($dataATE);
             if ($ddate >= $ddde) {
-                $queryDatas .= " AND CAST(e.created as DATE) between '$dataDE' AND '$dataATE' ";
+                $queryDatas .= " AND CAST(r.created as DATE) between cast('$dataDE' as date) AND cast('$dataATE' as date) ";
             }
         } elseif (isset($dataDE)) {
-            $queryDatas .= " AND CAST(e.created as DATE) > '$dataDE' ";
+            $queryDatas .= " AND CAST(r.created as DATE) > cast('$dataDE' as date) ";
         } elseif (isset($dataATE)) {
-            $queryDatas .= " AND CAST(e.created as DATE) < '$dataATE' ";
+            $queryDatas .= " AND CAST(r.created as DATE) < cast('$dataATE' as date) ";
         }
 
-        if (isset($dataInicioDE) && isset($dataInicioATE)) {
-            $ddde = new DateTime($dataInicioDE);
-            $ddate = new DateTime($dataInicioATE);
-            if ($ddate >= $ddde) {
-                $queryDatas .= " AND CAST(e.data_inicio as DATE) between '$dataInicioDE' AND '$dataInicioATE' ";
-            }
-        } elseif (isset($dataInicioDE)) {
-            $queryDatas .= " AND CAST(e.data_inicio as DATE) > '$dataInicioDE' ";
-        } elseif (isset($dataInicioATE)) {
-            $queryDatas .= " AND CAST(e.data_inicio as DATE) < '$dataInicioATE' ";
-        }
+        //if (isset($dataInicioDE) && isset($dataInicioATE)) {
+            //$ddde = new DateTime($dataInicioDE);
+            //$ddate = new DateTime($dataInicioATE);
+            //if ($ddate >= $ddde) {
+              //  $queryDatas .= " AND CAST(e.data_inicio as DATE) between '$dataInicioDE' AND '$dataInicioATE' ";
+            //}
+        //} elseif (isset($dataInicioDE)) {
+          //  $queryDatas .= " AND CAST(e.data_inicio as DATE) > '$dataInicioDE' ";
+        //} elseif (isset($dataInicioATE)) {
+           // $queryDatas .= " AND CAST(e.data_inicio as DATE) < '$dataInicioATE' ";
+        //} 
 
-        $dados = $this->query("SELECT p.idpaciente, p.nome, p.sobrenome, p.email, p.cpf, pro.nome, pro.sobrenome ,e.* 
-                FROM paciente p 
-                LEFT JOIN evento e ON (p.idpaciente = e.id_paciente $queryDatas) 
-                LEFT JOIN agenda a ON (e.id_agenda = a.idagenda) 
-                LEFT JOIN profissional pro ON (a.id_profissional = pro.idprofissional) $query 
-                ORDER BY p.nome, p.sobrenome, e.data_inicio");
+        $queryFinal = "SELECT r.idrecebimento,r.descricao, r.created, p.idpaciente, p.nome, p.sobrenome, p.email, p.cpf, pro.nome, pro.sobrenome , min(e.data_inicio) AS Inicio, MAX(e.data_fim) AS Fim
+        FROM paciente p 
+        INNER JOIN recebimento as r on(r.id_paciente = p.idpaciente)
+        INNER JOIN evento e ON (r.idrecebimento = e.id_recebimento) 
+        LEFT JOIN agenda a ON (e.id_agenda = a.idagenda) 
+        LEFT JOIN profissional pro ON (a.id_profissional = pro.idprofissional)  $query 
+        $queryDatas
+        GROUP BY r.idrecebimento
+        ORDER BY p.nome, p.sobrenome, e.data_inicio";
+   
+
+        $dados = $this->query($queryFinal);
         return $dados;
     }
 

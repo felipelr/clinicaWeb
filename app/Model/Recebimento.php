@@ -494,13 +494,13 @@ class Recebimento extends AppModel
 
                 inner join clinica on(clinica.idclinica = r.id_clinica)               
 
-                INNER JOIN tipo_financeiro ON(tipo_financeiro.idfinanceirotipo = financeiro.id_financeiro_tipo)
+                INNER JOIN tipo_financeiro ON(tipo_financeiro.idfinanceirotipo = financeiro.id_financeiro_tipo_pagamento)
 
                 where r.descricao like '%$nome_recebimento_%'                 
 
                 and r.ativo = 1 $query 
 
-                GROUP BY clinica.idclinica, p.idplanocontas, c.descricao, r.descricao, r.idrecebimento
+                GROUP BY clinica.idclinica, p.idplanocontas, financeiro.id_financeiro_tipo_pagamento, c.descricao, r.descricao, r.idrecebimento
 
                 ORDER BY clinica.idclinica, p.idplanocontas";
 
@@ -586,6 +586,22 @@ class Recebimento extends AppModel
         return $dados;
     }
 
+    public function parcelasPorRecebimento($idrecebimento)
+    {
+        $dados = $this->query("SELECT x.tipo, x.valor_parcela, x.data_vencimento 
+                                FROM (
+                                    SELECT 
+                                        UPPER(fp.tipo) AS tipo, 
+                                        f.valor AS valor_parcela, 
+                                        CAST(f.data_vencimento AS DATE) AS data_vencimento 
+                                    FROM financeiro AS f
+                                    INNER JOIN tipo_financeiro AS fp ON (ifnull(f.id_financeiro_tipo_pagamento, id_financeiro_tipo) = fp.idfinanceirotipo)
+                                    WHERE f.id_recebimento = $idrecebimento  
+                                ) AS x 
+                                ORDER BY x.data_vencimento;");
+
+        return $dados;
+    }
 
 
     public function listarRenovacaoContratoJQuery($search = null, $inicio = null, $totalRegistros = null, $ordenacao = null, $vencimentoDe = null, $vencimentoAte = null)
