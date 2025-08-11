@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
             <?php echo $this->fetch('title'); ?>
         </title>
@@ -127,7 +127,7 @@
             <div class="bg-titulo">
                 <h2 class="titulo">Recebimentos do Paciente</h2>
             </div>            
-            <hr/>
+            <hr>
             <div>
                 <h2 class="text-success">Identificação do Paciente</h2>
                 <div class="container">
@@ -213,10 +213,10 @@
             </div>
 
             <div style="clear: left;">
-                <br/>
+                <br>
             </div>
 
-            <hr/>
+            <hr>
 
             <div>
                 <h2 class="text-success">Recebimentos</h2>

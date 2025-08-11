@@ -216,6 +216,7 @@ class PacienteController extends AuthController
             if (isset($data["Paciente"]["data_inicio_atendimento"])) {
                 $data["Paciente"]["data_inicio_atendimento"] = preg_replace("/(\d+)\D+(\d+)\D+(\d+)/", "$3-$2-$1", $data["Paciente"]["data_inicio_atendimento"]);
             }
+            $data["Paciente"]["ativo"] = 1;
             $paciente->save($data["Paciente"]);
             $foto = $_FILES["foto"];
             $idpaciente = (int) $data["Paciente"]["idpaciente"];

@@ -166,7 +166,7 @@ class RecebimentoController extends AuthController
             if (isset($data['Recebimento']['eventos'])) {
                 $eventos = $data['Recebimento']['eventos'];
                 $dataInicio = $data['Recebimento']['data_inicio_eventos'];
-                $idAgenda = isset($data['Recebimento']['id_agenda']) ? $data['Recebimento']['id_agenda'] : 0;
+                $idAgenda = $data['Recebimento']['id_agenda'];
                 $tipoConflito = $data['Recebimento']['conflito'];
                 $fixo = $data['Recebimento']['fixo'];
             }
@@ -203,7 +203,7 @@ class RecebimentoController extends AuthController
                         $planoSessaoSelecionado = $planoSessao->retornarPorId($dadosRecebimento['id_plano_sessao']);
                     }
 
-                    $quantidadeSessoesMax = 1;
+                    $quantidadeSessoesMax = 0;
 
                     if (isset($planoSessaoSelecionado)) {
                         if ($planoSessaoSelecionado['tipo_quantidade_sessoes'] == 'MAX') {
@@ -969,8 +969,11 @@ class RecebimentoController extends AuthController
 
                 $dataRecebimento = $recebimento->retornarPorIdComPaciente($idrecebimento);
                 $dataEndereco = $endereco->retornarPorPaciente($dataRecebimento['paciente']['idpaciente']);
+                $parcelas = $recebimento->parcelasPorRecebimento($dataRecebimento['idrecebimento']);
+                
                 $this->set("recebimento", $dataRecebimento);
                 $this->set("endereco", $dataEndereco);
+                $this->set("parcelas", $parcelas);
             } else {
                 return $this->redirect(array("controller" => "recebimento", "action" => "index"));
             }

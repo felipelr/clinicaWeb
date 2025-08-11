@@ -147,8 +147,8 @@ class RelatorioController extends AuthController {
         $size = count($arrayPacientes);
 
         $dados = "";
-
-
+ 
+ 
 
         if ($size > 0) {
 
@@ -195,7 +195,7 @@ class RelatorioController extends AuthController {
                                     <tr>
 
                                         <th>Profissional</th>
-
+                                        
                                         <th>Evento</th>
 
                                         <th class='text-center'>Data de Início</th>
@@ -208,7 +208,7 @@ class RelatorioController extends AuthController {
 
                                 <tbody>";
 
-                if (isset($arrayPacientes[$i]["e"]["data_inicio"])) {
+                if (isset($arrayPacientes[$i]["0"]["Inicio"])) {
 
                     $idpaciente = isset($arrayPacientes[$i]["p"]["idpaciente"]) ? $arrayPacientes[$i]["p"]["idpaciente"] : -1;
 
@@ -222,11 +222,11 @@ class RelatorioController extends AuthController {
 
                                     <td>{$arrayPacientes[$i]["pro"]["nome"]} {$arrayPacientes[$i]["pro"]["sobrenome"]}</td>
 
-                                    <td>{$arrayPacientes[$i]["e"]["descricao"]}</td>
+                                    <td>{$arrayPacientes[$i]["r"]["descricao"]}</td>
 
-                                    <td class='text-center'>" . date('d/m/Y - H:i:s', strtotime($arrayPacientes[$i]["e"]["data_inicio"])) . "</td>
+                                    <td class='text-center'>" . date('d/m/Y - H:i:s', strtotime($arrayPacientes[$i]["0"]["Inicio"])) . "</td>
 
-                                    <td class='text-center'>" . date('d/m/Y - H:i:s', strtotime($arrayPacientes[$i]["e"]["data_fim"])) . "</td>
+                                    <td class='text-center'>" . date('d/m/Y - H:i:s', strtotime($arrayPacientes[$i]["0"]["Fim"])) . "</td>
 
                                 </tr>";
 

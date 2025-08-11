@@ -1,0 +1,8 @@
+2025-08-11 13:48:58 Error: Fatal Error (64): Cannot use 'String' as class name as it is reserved in [/home/storage/3/a4/45/conexaovivamais/public_html/sistema/lib/Cake/Utility/String.php, line 24]
+2025-08-11 13:48:58 Error: [FatalErrorException] Cannot use 'String' as class name as it is reserved
+Stack Trace:
+#0 /home/storage/3/a4/45/conexaovivamais/public_html/sistema/lib/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'Cannot use 'Str...', '/home/storage/3...', 24)
+#1 /home/storage/3/a4/45/conexaovivamais/public_html/sistema/lib/Cake/Core/App.php(931): ErrorHandler::handleError(64, 'Cannot use 'Str...', '/home/storage/3...', 24, Array)
+#2 /home/storage/3/a4/45/conexaovivamais/public_html/sistema/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}

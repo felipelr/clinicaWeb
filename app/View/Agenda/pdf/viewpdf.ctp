@@ -143,12 +143,6 @@
 </head>
 
 <body>
-    <script type="text/php">
-        if ( isset($pdf) ) {
-            $font = Font_Metrics::get_font("helvetica", "bold");
-            $pdf->page_text(550, 750, "{PAGE_NUM} de {PAGE_COUNT}", $font, 10, array(0,0,0));
-            }
-        </script>
     <div>
         <div class="bg-titulo">
             <h2 class="titulo text-center">Relatório de Paciente</h2>

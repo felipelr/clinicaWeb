@@ -161,225 +161,117 @@
                 endereço <?= $endereco['logradouro'] . ', ' . $endereco['numero'] . ', ' . $endereco['bairro'] . ', ' . $endereco['cidade'] . '/' . $endereco['uf'] ?>,
                 telefone <?= $recebimento['paciente']['telefone_celular'] ?>,
                 email <?= $recebimento['paciente']['email'] ?>
-                doravante simplesmente designado(a) CONTRATANTE e, de outro lado, a empresa Conexão Corpo e Mente Centro de Reabilitação Ltda.,
-                CNPJ nº 23.690.614/0001-48, CREFITO 3: 9051/SP, localizada na Rua Monteiro Lobato, nº 550 – Vila Rodrigues, Assis/SP;
-                Telefone 18 99606-1729; email: conexaocorpoemente@gmail.com, e responsável técnica Bruna Mastroldi dos Santos,
-                CREFITO 3: 157.227F, doravante designada simplesmente CONTRATADO, têm, entre si, justo e contratado celebrar o presente contrato,
-                que se regerá pelas cláusulas seguintes:
+                doravante simplesmente designado(a) <strong>CONTRATANTE</strong> e, de outro lado, a empresa 
+                <strong>Conexão Corpo e Mente Centro de Reabilitação Ltda.</strong>, 
+                CNPJ nº 23.690.614/0001-48, doravante designada simplesmente 
+                <strong>CONTRATADO</strong>, têm, entre si, justo e contratado celebrar o presente contrato, que se regerá pelas cláusulas seguintes:
             </p>
 
-            <p>
-                <strong>I + DO OBJETO</strong><br>
-                <strong>1/</strong> O CONTRATADO prestará ao CONTRATANTE os serviços consistentes em:
-                ( ) FISIOTERAPIA, ( ) PILATES ( ) TFI, no plano de _____ ( ) meses ou ( ) sessões, com a utilização de equipamentos próprios e adequados para a prática da modalidade contratada, bem como análise e diagnóstico cinesiofuncional, orientação e acompanhamento na realização do tratamento/treinamento pretendido bem como na execução de mecanoterapia / cinesioterapia/ reabilitação/treinamento físico.
-            </p>
-
-
-            <p>
-                <strong>II + DAS INFORMAÇÕES DO CONTRATANTE</strong><br>
-                <strong>2/</strong> O CONTRANTE declara e atesta que todas as informações prestadas na anamnese, principalmente com relação a sua avaliação médica, são verídicas e que foi devidamente instruído dos riscos dos excessos na prática das atividades propostas nas aulas.
-                <strong>3/</strong> Compete ao CONTRATANTE informar ao instrutor, antes do início da aula, eventual lesão, limitação óssea, articular, muscular ou qualquer intervenção médica ou cirúrgica, invasiva ou não, ocorridos após o preenchimento da anamnese.
-            </p>
-
-            <p>
-                <strong>III + DOS HORÁRIOS DOS ATENDIMENTOS</strong><br>
-                <strong>4/</strong> Os agendamentos dessa modalidade estarão condicionados à disponibilidade de atendimento por parte do CONTRATADO, em horários pré-definidos e mediante agendamento prévio conforme disponibilidade. Por tratar-se de modalidade específica, prezando pela qualidade satisfatória da prática e da produtividade e segurança ao CONTRATANTE, o CONTRATADO se reserva o direito de limitar a quantidade de alunos por cada horário disponível. Os agendamentos fixos e renovação dessa contratação, encontra-se anexo.
-            </p>
-            <p>
-                <strong>5/</strong> A As sessões agendadas devem ser desmarcadas, via WhatsApp, com no mínimo 2 (duas) horas de antecedência. Cancelamentos de agendamentos, quando motivados, serão repostos em sua totalidade; quando desmotivados, serão repostos apenas à razão de 25% (vinte e cinco por cento) do número de agendamentos cancelados. A reposição de aulas no horário regularmente adotado pelo aluno não é garantida, devendo ser efetuado mediante disponibilidade de vaga, previamente agendado e dentro do prazo de vigência desse, salvo exceção motivada.
-            </p>
-
-            <p>
-                <strong>IV + DO PREÇO E DEMAIS MATÉRIAS FINANCEIRAS</strong>
-                <br><strong>6/</strong> Os planos de pagamento adotam os seguintes intervalos de tempo mensal: UM, TRÊS, SEIS, NOVE E DOZE MESES. A forma de pagamento pode ocorrer por meio de quitação em dinheiro, cheque e cartão de crédito a própria contratada.
-                <br><strong>7/</strong> Os valores dos planos de pagamento encontram-se divulgados na secretaria do CONTRATADO, sendo reajustados anualmente no mês de março, segundo índice correção correspondente ao IGPM-FGV ou outro que venha a substituí-lo.
-                <br><strong>8/</strong> O não pagamento na data de vencimento acarretará multa de 2% (dois por cento), acrescida de juros moratórios diários de 0,033% (1% ao mês), sendo que eventual ingresso judicial para cobrança implicará ao CONTRATANTE a incidência de correção monetária, custas e despesas judiciais, somado aos honorários advocatícios na proporção de 20% (vinte por cento) do valor dado à causa.
-                <br><strong>9/</strong> Eventual desistência e/ou cancelamento pelo CONTRATANTE do Plano contratado deverá ser feito por escrito, acarretando ao CONTRATANTE multa equivalente a 20% (vinte por cento) sobre o valor remanescente a pagar até o encerramento do contrato em vigor, acrescida das taxas bancárias ou de cartões de crédito. O valor do saldo remanescente será calculado segundo a tabela de preços mensais multiplicados pelo número de meses remanescentes.
-                <br><strong>10/</strong> Durante o período de vigência do plano contratado, pode o CONTRATANTE requerer por escrito afastamento das atividades a seu livre critério. Durante o afastamento as parcelas do plano contratado serão regularmente pagas, sendo o intervalo acrescido à data de encerramento do plano em vigor. Os períodos de afastamento concedidos assim serão regulados: Plano 6 meses: 2 semanas; Plano 9 meses: 3 semanas; Plano 12 meses: 4 semanas.
-                <br><strong>11/</strong> O CONTRATANTE assume o dever de comunicar suas ausências com ao menos 2 dias úteis de antecedência para gozar o período de afastamento previsto no item 10, sempre em múltiplos semanais (semanas completas). A simples ausência às aulas implica em continuidade no decurso do prazo contratado inicialmente.
-                <br><strong>12/</strong> Não estão compreendidos nos períodos previstos no item anterior os afastamentos de ordem médica devidamente atestados por profissional habilitado e comunicados por escrito ao CONTRATADO em até 5 (cinco) dias após o afastamento do CONTRATANTE das aulas. Nos casos em que a patologia apresentada implicar em afastamento de longo prazo haverá cancelamento do plano contratado, sem cobrança de multa, mediante acordo entre as partes.
-
-            </p>
-
-            <div class="page-break">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="<?php echo $_SERVER["DOCUMENT_ROOT"] . '/sistema/app/webroot/img/logo_corpo_mente.png'; ?>" height="75" />
-                    </div>
-                    <div class="col-md-6">
-                        <h4>
-                            CONTRATO DE PRESTAÇÃO DE SERVIÇOS
-                            <br />Nº <?= $recebimento['idrecebimento'] ?> / Ano <?= date('Y') ?>
-                        </h4>
-                    </div>
-                </div>
-
-                <div style="clear: both;"></div>
-                <br>
-
-                <p>
-                    <strong>V + DA VIGÊNCIA E DA RENOVAÇÃO</strong>
-                    <br><strong>13/</strong> A vigência do contrato obedecerá ao descrito nas demais informações que acompanham o presente documento, sendo que o presente instrumento particular é celebrado em caráter irrevogável e irretratável, possuindo caráter de liquidez, certeza e executoriedade, obrigando as partes e seus herdeiros ou sucessores a qualquer título.
-                    <br><strong>14/</strong> A renovação do contrato se dará por meio de aposição de ciência no Anexo I do presente instrumento (Termo de Renovação), devendo ser manifestada pelo CONTRATANTE até o término do período previamente contratado. No silêncio do CONTRATANTE será o pactuado considerado como extinto.
-                    <br><strong>15/</strong> Eventual tolerância para com o descumprimento de qualquer das cláusulas ou condições pactuadas neste instrumento não constituirá renúncia de direitos, novação, modificação, precedente invocável de qualquer espécie, nem retirará os efeitos da rescisão, constituindo mera tolerância da parte que não lhe deu causa.
-
-                </p>
-
-                <p>
-                    <strong>V + DO ACEITE</strong><br>
-                    <strong>16/</strong> O CONTRATADO elege como meios de comunicação oficial com o CONTRATANTE o e-mail: [conexaocorpoemente@gmail.com] ou WhattsApp [18 99606-1729], servindo este instrumento como canal para regular situações cotidianas e eventos/acontecimentos que possam vir a afetar a normal execução desse Contrato. As comunicações entre as partes mencionada nos itens 9, 10, 11 e 12 serão efetuadas por escrito pelo endereço de email: [conexaocorpoemente@gmail.com] ou whattsApp [18 99606-1729].
-                    <strong>17/</strong> O CONTRATADO reserva-se o direito de rescindir este contrato no caso de reincidência do CONTRATANTE em atitudes e comportamentos que causem danos às instalações e equipamentos da academia, bem como representem discriminação, ofensa ou falta de urbanidade com os demais clientes e/ou treinadores e funcionários da academia, ou ainda, que prejudiquem a adequada prestação dos serviços contratados aos demais clientes.
-                    <strong>18/</strong> Na primeira ocorrência do disposto no item 17, será apresentada ao CONTRATANTE faltoso advertência escrita.
-                    <strong>19/</strong> O CONTRATANTE declara que previamente leu e entendeu todas as cláusulas e condições presentes a este instrumento quanto às hipóteses de desistência e/ou cancelamento do plano contratado e rescisão.
-                    <strong>20/</strong> As partes elegem o foro da Comarca de Assis/SP para dirimir as questões e litígios dele decorrentes.
-                    <strong>21/</strong> O presente ajuste obriga as partes contratantes, bem como seus herdeiros e sucessores a qualquer título e, como sinal de concordância com os termos deste instrumento firmam o mesmo em 2 (duas) vias de igual teor.
-
-                </p>
-
-                <br>
-                <p style="text-align: right;">
-                    Assis – SP, .......... de ..................................... de <?= date('Y') ?>.
-                </p>
-
-                <br><br>
-                <p style="text-align: center;">
-                    .........................................................................................
-                    <br><?= $recebimento['paciente']['nome'] . ' ' . $recebimento['paciente']['sobrenome'] ?>
-                </p>
-                <br><br>
-                <p style="text-align: center;">
-                    ..........................................................................................
-                    <br>Conexão Corpo e Mente Centro de Reabilitação Ltda.
-                </p>
-
-                <br>
-                <p>
-                    TESTEMUNHAS
-                </p>
-                <br><br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>
-                            ...............................................................
-                            <br>Nome
-                            <br>CPF nº
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <p>
-                            ...............................................................
-                            <br>Nome
-                            <br>CPF nº
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div style="clear: both;"></div>
-
-            <div class="page-break">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="<?php echo $_SERVER["DOCUMENT_ROOT"] . '/sistema/app/webroot/img/logo_corpo_mente.png'; ?>" height="75" />
-                    </div>
-                    <div class="col-md-6">
-                        <h4>
-                            CONTRATO DE PRESTAÇÃO DE SERVIÇOS
-                            <br />Nº <?= $recebimento['idrecebimento'] ?> / Ano <?= date('Y') ?>
-                        </h4>
-                    </div>
-                </div>
-
-                <div style="clear: both;"></div>
-
-                <br>
-
-                <p style="text-align: center;">
-                    <strong>ANEXO I – TERMO DE RENOVAÇÃO/COMPLEMENTAÇÃO DE MODALIDADES / AULAS</strong>
-                </p>
-                <br>
-
-                <div style="border: 1px solid #303030; padding: 4px; width: 100%;">
-                    <span>
-                        Cliente: <?= $recebimento['paciente']['nome'] . ' ' . $recebimento['paciente']['sobrenome'] ?>
-                    </span>
-                </div>
-                <table>
+            <div class="section-title">I. DO OBJETO E ACORDO DE SERVIÇO</div>
+            <ol>
+                <li><strong>Serviço contratado:</strong> (   ) PILATES, (   ) TFI, (   ) FISIOT./ REABILITAÇÃO MUSCULOESQUELÉTICA, (   ) FISIOT. UROGINECOLÓGICA, assim, cada modalidade com seu responsável técnico conforme enquadramento nos órgãos de classe.</li>
+                <li><strong>Plano contratado:</strong> (   ) sessões avulsas (conforme agendamento prévio), (   ) meses ou (   ) sessões. Os agendamentos dessa modalidade estarão condicionados à disponibilidade de atendimento por parte do CONTRATADO, em horários pré-definidos e mediante agendamento prévio conforme disponibilidade e aviso por escrito. Por tratar-se de modalidade específica e pessoal, sendo intransferível, prezando pela qualidade satisfatória da prática e da produtividade e segurança ao CONTRATANTE, o CONTRATADO se reserva o direito de limitar a quantidade de alunos por cada horário disponível; assim, inicialmente acerta-se entre as partes os dias e horários descritos: <strong>_______________________________________________________________  
+                _____________________________________________________</strong>, no período vigente de <strong>_____________________ a _____________________</strong>.</li> 
+                <table style="margin-top: 20px;">
                     <thead>
                         <tr>
-                            <td>Nº Contrato</td>
-                            <td>Modalidade</td>
-                            <td>Plano Contratado</td>
-                            <td>Vigência do Plano</td>
-                            <td>Agendamentos</td>
-                            <td>Ciência</td>
+                            <th>Forma de Pagamento</th>
+                            <th>Valor</th>
+                            <th>Data de Vencimento</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        for ($i = 0; $i < 30; $i++) {
-                            echo '
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>';
-                        }
-                        ?>
+                        <?php foreach ($parcelas as $parcela): ?>
+                            <tr>
+                                <td><?= h($parcela['x']['tipo']) ?></td>
+                                <td><?= h(number_format($parcela['x']['valor_parcela'], 2, ',', '.')) ?></td>
+                                <td><?= h(date('d/m/Y', strtotime($parcela['x']['data_vencimento']))) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
-                </table>
-            </div>
+                </table> 
+            </ol>
+            
+            <div class="section-title">II. DO PREÇO E DEMAIS MATÉRIAS FINANCEIRAS</div>
+            <ol>
+                <li>Os planos de pagamento encontram-se divulgados na secretaria do CONTRATADO, sendo reajustados anualmente no mês de março, segundo índice de correção do IGPM ou outro que venha a substituí-lo.</li>
+                <li>A quitação dos planos acontece conforme descrito em “3”, e cabe ao contratante solicitar sua via de comprovante de pagamento a fim de comprovação da quitação em espécie; em casos de cartão ou transferência via pix, vale-se da via do cliente e nas situações de nota promissória, segue item “6”.</li>
+                <li>Planos assinalados como NP, o CONTRATANTE compromete-se a pagar o valor de <strong>R$________________ (____________________________________________)</strong>, mensalmente via Pix ou Espécie, sendo acordado em _____meses, no período de <strong>___________________________________________</strong>, com vencimento no dia <strong>______</strong> de cada mês.</li>
+                <li>O não pagamento na data de vencimento acarretará perda do desconto na mensalidade em atraso e ainda juros moratórios diários de 0,033% (1% ao mês), sendo que eventual ingresso judicial para cobrança implicará ao CONTRATANTE a incidência de correção monetária, custas e despesas judiciais, somado aos honorários advocatícios na proporção de 20% (vinte por cento) do valor dado à causa.</li>
+                <li>Eventual desistência e/ou cancelamento pelo CONTRATANTE do Plano contratado deverá ser feito por escrito, acarretando ao CONTRATANTE multa equivalente a 20% (vinte por cento) sobre o valor remanescente a pagar até o encerramento do contrato em vigor, acrescida das taxas bancárias ou de cartões de crédito. O valor do saldo remanescente será calculado segundo a tabela de preços mensais multiplicados pelo número de meses remanescentes.</li>
+                <li>Faltas e ausências não serão descontadas na mensalidade, bem como feriados e recessos não cabem reposição de aulas.</li>
+                <li>Durante o período de vigência do plano contratado, pode o Contratante requerer por escrito afastamento das atividades por motivo justificado de saúde (atestado médico), assim, a Contratada compromete-se a reposição das aulas em horários disponíveis e extras ao horário previamente contratado, podendo ainda haver prolongamento do período vigente do plano e conforme atestado seguinte forma: Plano 6 meses: 2 semanas; Plano 9 meses: 3 semanas; Plano 12 meses: 4 semanas.</li>
+                <li>Afastamentos por motivo de férias devem ser comunicados com até 2 dias de antecedência podem ser repostas, dentro do plano vigente, em horários disponíveis e extras ao horário previamente contratado; Afastamentos por motivo de trabalho devem ser comunicados com até 3 horas de antecedência podem ser repostas dentro do mês em horários disponíveis e extras ao horário previamente contratado.</li>
+                <li>Nos casos de patologia ou tratamento que impliquem em afastamento de longo prazo, haverá cancelamento do plano contratado, sem cobrança de multa, mediante acordo entre as partes.</li>
+            </ol>
+            <div class="section-title">III. DAS INFORMAÇÕES DO CONTRATANTE</div>
+            <ol>
+                <li>O CONTRANTE declara e atesta que todas as informações prestadas na anamnese, principalmente com relação a sua avaliação médica, são verídicas e que foi devidamente instruído dos riscos dos excessos na prática das atividades propostas nas aulas.</li>
+                <li>Compete ao CONTRATANTE informar ao instrutor, antes do início da aula, eventual lesão, limitação óssea, articular, muscular ou qualquer intervenção médica ou cirúrgica, invasiva ou não, ocorridos após o preenchimento da anamnese.</li>
+            </ol>  
 
-            <div class="page-break">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="<?php echo $_SERVER["DOCUMENT_ROOT"] . '/sistema/app/webroot/img/logo_corpo_mente.png'; ?>" height="75" />
-                    </div>
-                    <div class="col-md-6">
-                        <h4>
-                            CONTRATO DE PRESTAÇÃO DE SERVIÇOS
-                            <br />Nº <?= $recebimento['idrecebimento'] ?> / Ano <?= date('Y') ?>
-                        </h4>
-                    </div>
+            <div style="clear: both;"></div>
+            <br>
+
+            <div class="section-title">IV. DA VIGÊNCIA E DA RENOVAÇÃO</div>
+            <ol>
+                <li>A vigência do contrato obedecerá ao descrito nas demais informações que acompanham o presente documento, sendo que o presente instrumento particular é celebrado em caráter irrevogável e irretratável, possuindo caráter de liquidez, certeza e executoriedade, obrigando as partes e seus herdeiros ou sucessores a qualquer título.</li>
+                <li>A renovação do contrato deverá ser manifestada pelo CONTRATANTE até o término do período previamente contratado, a fim de preservar os dias e horários pré-estabelecidos. No silêncio do CONTRATANTE será o pactuado considerado como extinto.</li>
+                <li>Eventual tolerância para com o descumprimento de qualquer das cláusulas ou condições pactuadas neste instrumento não constituirá renúncia de direitos, novação, modificação, precedente invocável de qualquer espécie, nem retirará os efeitos da rescisão, constituindo mera tolerância da parte que não lhe deu causa.</li>
+            </ol>
+
+            <div class="section-title">V. DO ACEITE E TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO</div>
+            <ol>
+                <li>O CONTRATADO elege como meios de comunicação oficial com o CONTRATANTE o e-mail: <strong>[conexaocorpoemente@gmail.com]</strong> ou WhatsApp <strong>[18 99606-1729]</strong>, servindo este instrumento como canal para regular situações cotidianas e eventos/acontecimentos que possam vir a afetar a normal execução desse Contrato.</li>
+                <li>O CONTRATADO reserva-se o direito de rescindir este contrato no caso de reincidência do CONTRATANTE em atitudes e comportamentos que causem danos às instalações e equipamentos da academia, bem como representem discriminação, ofensa ou falta de urbanidade com os demais clientes e/ou treinadores e funcionários da academia, ou ainda, que prejudiquem a adequada prestação dos serviços contratados aos demais clientes.</li>
+                <li>Na primeira ocorrência do disposto no item 17, será apresentada ao CONTRATANTE faltoso advertência escrita.</li>
+                <li>Quanto aos procedimentos de Fisioterapia Musculoesquelética ou Uroginecológica declaro ciência que a profissional responsável supriu as dúvidas e fez orientações quanto ao tratamento (conforme prontuário), e que há procedimentos que podem causar dor, irritação, desconfortos ou pequenos sangramentos, assim, ao longo das sessões são realizados reavaliações e manejos de conduta conforme necessário e estou ciente que são procedimentos de baixa periculosidade.</li>
+                <li>Quanto ao uso de fotos / filmagens e depoimentos (   ) AUTORIZO  (   ) NÃO AUTORIZO, sendo sem finalidade comercial, para ser utilizada a título de divulgação das atividades desenvolvidas junto à Conexão Corpo e Mente Centro de Reabilitação Ltda. A presente autorização é concedida a título gratuito, abrangendo o uso da imagem acima mencionada em todo território nacional e no exterior, em todas as suas modalidades e, em destaque, das seguintes formas: (I) redes sociais/website; (II) cartazes; (III) e-mail marketing para clientes; (IV) folder, etc.</li>
+            </ol>
+
+            <div class="section-title">VI. DO FORO</div>
+            <ol>
+                <li>Fica eleito o Foro da cidade de São João da Boa Vista, Estado de São Paulo, para resolver qualquer dúvida ou litígio oriundo do presente contrato.</li>
+            </ol>
+
+            <br>
+            <p style="text-align: right;">
+                Assis – SP, .......... de ..................................... de <?= date('Y') ?>.
+            </p>
+
+            <br><br>
+            <p style="text-align: center;">
+                .........................................................................................
+                <br><?= $recebimento['paciente']['nome'] . ' ' . $recebimento['paciente']['sobrenome'] ?>
+            </p>
+            <br><br>
+            <p style="text-align: center;">
+                ..........................................................................................
+                <br>Conexão Corpo e Mente Centro de Reabilitação Ltda.
+            </p>
+
+            <br>
+            <p>
+                TESTEMUNHAS
+            </p>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        ...............................................................
+                        <br>Nome
+                        <br>CPF nº
+                    </p>
                 </div>
-
-                <div style="clear: both;"></div>
-
-                <br>
-
-                <p style="text-align: center;">
-                    <strong>ANEXO II – TERMO DE AUTORIZAÇÃO DE USO DE IMAGEM</strong>
-                </p>
-                <br>
-                <p>
-                    Eu, <?= $recebimento['paciente']['nome'] . ' ' . $recebimento['paciente']['sobrenome'] ?>,
-                    portador da Cédula de Identidade nº <?= $recebimento['paciente']['rg'] ?>,
-                    inscrito no CPF sob nº <?= $recebimento['paciente']['cpf'] ?>,
-                    residente à <?= $endereco['logradouro'] . ', ' . $endereco['numero'] . ', ' . $endereco['bairro'] . ', ' . $endereco['cidade'] . '/' . $endereco['uf'] ?>,
-                    ( ) AUTORIZO ( ) NÃO AUTORIZO, o uso de minha imagem (ou do menor
-                    ______________________________________________________________________________________
-                    sob minha responsabilidade) em fotos ou filme, sem finalidade comercial,
-                    para ser utilizada a título de divulgação das atividades desenvolvidas junto à Conexão Corpo e Mente Centro de Reabilitação Ltda. A presente autorização é concedida a título gratuito,
-                    abrangendo o uso da imagem acima mencionada em todo território nacional e no exterior, em todas as suas modalidades e, em destaque, das seguintes formas: (I) redes sociais/website; (II) cartazes; (III) divulgação em geral.
-                    Por esta ser a expressão da minha vontade declaro que autorizo o uso acima descrito sem que nada haja a ser reclamado a título de direitos conexos à minha imagem ou a qualquer outro.
-                </p>
-
-                <br>
-                <p style="text-align: right;">
-                    Assis – SP, .......... de ..................................... de <?= date('Y') ?>.
-                </p>
-
-                <br><br><br><br>
-                <p style="text-align: center;">
-                    ...............................................................
-                    <br>[ASSINATURA DO ALUNO]
-                </p>
-            </div>
+                <div class="col-md-6">
+                    <p>
+                        ...............................................................
+                        <br>Nome
+                        <br>CPF nº
+                    </p>
+                </div>
+            </div> 
+            <div style="clear: both;"></div>  
         </div>
     </div>
 </body>

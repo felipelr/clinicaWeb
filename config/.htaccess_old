@@ -1,0 +1,3 @@
+#AddHandler php56-script .php
+#suPHP_ConfigPath /home/conexaovivamais/
+php_flag asp_tags off

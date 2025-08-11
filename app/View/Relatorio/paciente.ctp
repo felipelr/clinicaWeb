@@ -52,17 +52,7 @@
                     <label class="control-label">até: </label>
                     <input id="data-ate" class="form-control" name="data_ate" value="<?php echo $dataATE; ?>"/>
                 </div>
-            </div>
-            <div class="row-divisao">
-                <div class="form-group col-md-6">
-                    <label class="control-label">Data de inicio: </label>
-                    <input id="data-inicio-de" class="form-control" name="data_inicio_de" value="<?php echo $dataInicioDE; ?>"/>
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="control-label">até: </label>
-                    <input id="data-inicio-ate" class="form-control" name="data_inicio_ate" value="<?php echo $dataInicioATE; ?>"/>
-                </div>
-            </div>
+            </div> 
             <div style="padding: 15px;">             
                 <div class="center-block" style="width: 150px;">
                     <button id="btn-search" type="button" onclick="consultar()" class="btn btn-primary "><i class="fa fa-search fa-lg"></i> Consultar</button>
